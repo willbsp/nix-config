@@ -1,6 +1,6 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   home.username = "will";
-  home.homeDirectory = "/home/will";
+  home.homeDirectory = lib.mkForce "/Users/will/";
   home.stateVersion = "24.05";
   programs.git = {
     enable = true;

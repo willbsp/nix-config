@@ -34,10 +34,20 @@
         ];
       };
     };
-    darwinConfigurations.macmini = nix-darwin.lib.darwinSystem {
+    darwinConfigurations = {
+    macmini = nix-darwin.lib.darwinSystem {
+      system= "aarch64-darwin";
       modules = [
         ./hosts/macmini/configuration.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.backupFileExtension = "backup";
+          home-manager.users.will = import ./home.nix;
+        }
       ];
+    };
     };
   };
 }
