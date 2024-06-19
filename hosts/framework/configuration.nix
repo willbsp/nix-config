@@ -10,28 +10,33 @@
     ];
 
   # Bootloader
-  boot.initrd = {
-    systemd.enable = true;
-    verbose = false;
+  boot = {
+    initrd = {
+      systemd.enable = true;
+      verbose = false; # silent boot
+    };
+    loader = {
+      systemd-boot.enable = lib.mkForce false;
+      efi.canTouchEfiVariables = true;
+      timeout = 0;
+    };
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+    consoleLogLevel = 0; # silent boot
+    kernelParams = [
+      # enable s3 "deep" sleep
+      "mem_sleep_default=deep"
+      # silent boot settings
+      "quiet"
+      "boot.shell_on_fail"
+      "loglevel=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+    ];
   };
-  boot.loader = {
-    systemd-boot.enable = lib.mkForce false;
-    efi.canTouchEfiVariables = true;
-    timeout = 0;
-  };
-  boot.lanzaboote = {
-    enable = true;
-    pkiBundle = "/etc/secureboot";
-  };
-  boot.kernelParams = [
-    "mem_sleep_default=deep" # enable s3 deep sleep
-    "quiet"
-    "boot.shell_on_fail"
-    "loglevel=3"
-    "rd.systemd.show_status=false"
-    "rd.udev.log_level=3"
-    "udev.log_priority=3"
-  ];
 
   # Hardware
   hardware.bluetooth.enable = true;
