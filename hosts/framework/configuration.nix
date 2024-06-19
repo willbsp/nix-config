@@ -166,8 +166,6 @@
     wget
     unzip
     gcc
-    niv
-    neofetch
     sbctl
     wl-clipboard
 
@@ -182,10 +180,6 @@
       accents = [ "blue" ];
     })
     aha # for firmware security tab in plasma
-
-    # LSP related packages
-    nixpkgs-fmt
-    cargo # for nvim lsp installs
 
   ];
 

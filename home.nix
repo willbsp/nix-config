@@ -1,7 +1,10 @@
 { config, pkgs, lib, ... }: {
   home.username = "will";
-  home.homeDirectory = lib.mkForce "/Users/will/";
   home.stateVersion = "24.05";
+  home.packages = with pkgs; [
+    btop
+    neofetch
+  ];
   programs.git = {
     enable = true;
     userName = "willbsp";
@@ -111,8 +114,8 @@
                     ${builtins.readFile ./nvim/git.lua}
                     ${builtins.readFile ./nvim/keymaps.lua}
                     ${builtins.readFile ./nvim/neoscroll.lua}
-      	      ${builtins.readFile ./nvim/autopairs.lua}
-      	      ${builtins.readFile ./nvim/neotree.lua}
+                    ${builtins.readFile ./nvim/autopairs.lua}
+                    ${builtins.readFile ./nvim/neotree.lua}
     '';
   };
 }
