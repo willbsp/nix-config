@@ -84,6 +84,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Ratbagd for mouse
+  services.ratbagd.enable = true;
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
@@ -123,6 +126,7 @@
       kdePackages.kate
       kdePackages.discover
       protonmail-desktop
+      piper # for logitech mouse configuration
     ];
   };
 
