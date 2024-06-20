@@ -5,6 +5,7 @@
     btop
     neofetch
   ];
+  home.file.".ideavimrc".source = ./ideavim/.ideavimrc;
   programs.git = {
     enable = true;
     userName = "willbsp";

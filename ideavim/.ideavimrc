@@ -1,0 +1,144 @@
+" Base settings
+" ====================================
+" set hybrid line numbers
+set nu rnu
+" ensure vim mode and commands are displayed
+set showmode
+set showcmd
+" share with system clipboard
+set clipboard+=unnamed
+" number of lines to leave before scrolling
+set scrolloff=10
+" ignore cases
+set ignorecase
+" if any search characters are uppercase, treat as case sensitive search
+set smartcase 
+" search whilst typing
+set incsearch 
+" highlight search
+set hlsearch
+" map leader key to space
+let mapleader = " "
+
+" Plugins
+" ====================================
+" highlighted yank
+set highlightedyank
+" surround
+set surround
+" nerdtree
+set nerdtree
+" easymotion
+set easymotion
+set notimeout
+" whichkey
+set which-key
+" quickscope
+set quickscope
+
+" Leader commands
+" ====================================
+" easymotion
+map <leader>j <Plug>(easymotion-s)
+" nerdtree (q to exit)
+map <leader>x :NERDTreeToggle<CR>
+" go to
+nmap <leader>gd <Action>(GotoDeclaration)
+nmap <leader>gy <Action>(GotoTypeDeclaration)
+nmap <leader>gi <Action>(GotoImplementation)
+nmap <leader>gu <Action>(ShowUsages)
+nmap <leader>gt <Action>(GotoTest)
+nmap <leader>gf <Action>(Back)
+nmap <leader>gb <Action>(Forward)
+" comment lines
+map <leader>c <action>(CommentByLineComment)
+" display options
+map <leader>dd <action>(ToggleDistractionFreeMode)
+map <leader>dz <action>(ToggleZenMode)
+map <leader>df <action>(ToggleFullScreen)
+" window splits
+map <leader>wv <Action>(SplitVertically)
+map <leader>wh <Action>(SplitHorizontally)
+map <leader>wu <Action>(Unsplit)
+map <leader>wm <Action>(MoveEditorToOppositeTabGroup)
+" close tab
+map <leader>q <action>(CloseContent)
+" refactoring
+map <leader>rn <Action>(RenameElement)
+map <leader>rm <Action>(ExtractMethod)
+map <leader>rv <Action>(IntroduceVariable)
+map <leader>rf <Action>(IntroduceField)
+map <leader>rs <Action>(ChangeSignature)
+map <leader>rr <Action>(Refactorings.QuickListPopupAction)
+
+" Remove Conflicting IDE shortcuts
+" ====================================
+sethandler <C-2> a:vim
+sethandler <C-S-2> a:vim
+sethandler <C-6> a:vim
+sethandler <C-S-6> a:vim
+sethandler <C-;> a:vim
+sethandler <C-S-;> a:vim
+sethandler <C-A> a:vim
+sethandler <C-B> a:vim
+sethandler <C-D> a:vim
+sethandler <C-E> a:vim
+sethandler <C-F> a:vim
+sethandler <C-H> a:vim
+sethandler <C-I> a:vim
+sethandler <C-J> a:vim
+sethandler <C-K> a:vim
+sethandler <C-L> a:vim
+sethandler <C-M> a:vim
+sethandler <C-N> a:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:vim
+sethandler <C-R> a:vim
+sethandler <C-S> a:vim
+sethandler <C-T> a:vim
+sethandler <C-V> a:vim
+sethandler <C-W> a:vim
+
+" Which key
+" ====================================
+
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+
+let g:WhichKeyDesc_leader = "<leader>x Open file explorer"
+
+let g:WhichKeyDesc_comment = "<leader>c Comment line"
+
+let g:WhichKeyDesc_easymotion = "<leader>j Jump with Easymotion"
+let g:WhichKeyDesc_easymotion_prefix = "<leader><leader>"
+
+let g:WhichKeyDesc_close_tab = "<leader>q Close active tab"
+
+let g:WhichKeyDesc_window = "<leader>w Window splits"
+let g:WhichKeyDesc_window_split_vertically = "<leader>wv Split vertically"
+let g:WhichKeyDesc_window_split_horizontally = "<leader>wh Split horizontally"
+let g:WhichKeyDesc_window_split_unsplit = "<leader>wu Unsplit"
+let g:WhichKeyDesc_window_split_move_editor = "<leader>wm Move editor to opposite tab group"
+
+
+
+let g:WhichKeyDesc_refactoring = "<leader>r Refactoring menu"
+let g:WhichKeyDesc_refactoring_rename = "<leader>rn Rename element"
+let g:WhichKeyDesc_refactoring_method = "<leader>rm Extract method"
+let g:WhichKeyDesc_refactoring_variable = "<leader>rv Introduce variable"
+let g:WhichKeyDesc_refactoring_field = "<leader>rf Introduce field"
+let g:WhichKeyDesc_refactoring_signature = "<leader>rs Change signature"
+let g:WhichKeyDesc_refactoring_all = "<leader>rr Open refactorings list"
+
+let g:WhichKeyDesc_display = "<leader>d Display options"
+let g:WhichKeyDesc_zen_mode = "<leader>dz Toggle Zen mode"
+let g:WhichKeyDesc_df_mode = "<leader>dd Toggle Distraction-Free mode"
+let g:WhichKeyDesc_fullscreen = "<leader>df Toggle full screen"
+
+let g:WhichKeyDesc_goto = "<leader>g Go to X"
+let g:WhichKeyDesc_goto_declaration = "<leader>gd Go to Definition"
+let g:WhichKeyDesc_goto_type_declaration = "<leader>gy Go to Type Definition"
+let g:WhichKeyDesc_goto_implementation = "<leader>gi Go to Implementation"
+let g:WhichKeyDesc_goto_usages = "<leader>gu Go to Usages"
+let g:WhichKeyDesc_goto_test = "<leader>gt Go to Test"
+let g:WhichKeyDesc_goto_back = "<leader>gb Go Back"
+let g:WhichKeyDesc_goto_forward = "<leader>gf Go Forward"
