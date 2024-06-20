@@ -84,6 +84,10 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Enable virtualisation
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   # Ratbagd for mouse
   services.ratbagd.enable = true;
 
