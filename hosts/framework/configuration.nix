@@ -182,8 +182,8 @@
     sbctl
     wl-clipboard
 
-    # Terminal
-    chezmoi
+    # Development
+    arduino-cli
 
     # Plasma related packages
     kdePackages.kde-gtk-config

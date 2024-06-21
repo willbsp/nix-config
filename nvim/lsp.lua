@@ -35,3 +35,5 @@ lspconfig.nil_ls.setup {
   },
   capabilities = capabilities,
 }
+
+lspconfig.arduino_language_server.setup {}

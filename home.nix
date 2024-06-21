@@ -36,6 +36,12 @@
       lua-language-server
       stylua
 
+      # arduino
+      # ensure: arduino-cli core install ......
+      arduino-language-server
+      arduino-cli
+      clang-tools
+
       # nix language server
       nil
       nixpkgs-fmt
