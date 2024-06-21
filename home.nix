@@ -120,6 +120,7 @@
                     ${builtins.readFile ./nvim/neotree.lua}
     '';
   };
+  programs.home-manager.enable = true;
 }
 
 
