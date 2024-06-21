@@ -17,8 +17,21 @@
     };
   };
   outputs = { nixpkgs, nix-darwin, nixos-hardware, lanzaboote, home-manager, ... }: {
+
+    homeConfigurations = {
+      "will@prodesk-debian" = home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };
+        modules = [ ./home.nix ];
+      };
+    };
+
     nixosConfigurations = {
-      framework = nixpkgs.lib.nixosSystem {
+      "framework" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./hosts/framework/configuration.nix
@@ -34,20 +47,22 @@
         ];
       };
     };
+
     darwinConfigurations = {
-    macmini = nix-darwin.lib.darwinSystem {
-      system= "aarch64-darwin";
-      modules = [
-        ./hosts/macmini/configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "backup";
-          home-manager.users.will = import ./home.nix;
-        }
-      ];
+      "macmini" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./hosts/macmini/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
+            home-manager.users.will = import ./home.nix;
+          }
+        ];
+      };
     };
-    };
+
   };
 }
