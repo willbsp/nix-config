@@ -124,13 +124,20 @@
   users.users.will = {
     isNormalUser = true;
     description = "Will Spooner";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" ];
 
     packages = with pkgs; [
       kdePackages.kate
       kdePackages.discover
       protonmail-desktop
       piper # for logitech mouse configuration
+      androidStudioPackages.dev
+      godot_4
+      unityhub
+      angryipscanner
+      qflipper
+      dolphin-emu
+      rpi-imager
     ];
   };
 
@@ -186,6 +193,7 @@
     arduino-cli
 
     # Plasma related packages
+    kdePackages.partitionmanager
     kdePackages.kde-gtk-config
     kdePackages.breeze-gtk
     (catppuccin-kde.override {

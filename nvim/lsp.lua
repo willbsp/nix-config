@@ -37,3 +37,4 @@ lspconfig.nil_ls.setup {
 }
 
 lspconfig.arduino_language_server.setup {}
+lspconfig.gdscript.setup {}
