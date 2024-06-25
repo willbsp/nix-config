@@ -58,7 +58,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
-            home-manager.users.will = import ./home.nix;
+            home-manager.users.will = import ./hosts/macmini/home.nix;
           }
         ];
       };
