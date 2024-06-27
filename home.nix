@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }: {
   home.username = "will";
   home.stateVersion = "24.05";
-  home.homeDirectory = "/home/will";
   home.packages = with pkgs; [
     btop
     neofetch
