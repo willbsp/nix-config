@@ -51,6 +51,8 @@
   networking.hostName = "framework";
   networking.networkmanager.enable = true;
 
+  services.usbmuxd.enable = true;
+
   # Locale and time settings
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -188,6 +190,10 @@
     gcc
     sbctl
     wl-clipboard
+
+    # For accessing iOS devices
+    libimobiledevice
+    ifuse
 
     # Development
     arduino-cli
