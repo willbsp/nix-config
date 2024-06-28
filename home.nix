@@ -1,10 +1,11 @@
-{ config, pkgs, lib, ... }: {
+{ pkgs, nvim-pkg, ... }: {
   home.username = "will";
   home.stateVersion = "24.05";
   home.packages = with pkgs; [
     btop
     neofetch
   ];
+
   home.file.".ideavimrc".source = ./ideavim/.ideavimrc;
   programs.git = {
     enable = true;
@@ -26,6 +27,7 @@
   };
   programs.neovim = {
     enable = true;
+    package = nvim-pkg.neovim-unwrapped;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
@@ -110,19 +112,19 @@
 
     ];
     extraLuaConfig = ''
-                    ${builtins.readFile ./nvim/options.lua}
-                    ${builtins.readFile ./nvim/lsp.lua}
-                    ${builtins.readFile ./nvim/formatting.lua}
-                    ${builtins.readFile ./nvim/completion.lua}
-                    ${builtins.readFile ./nvim/treesitter.lua}
-                    ${builtins.readFile ./nvim/whichkey.lua}
-                    ${builtins.readFile ./nvim/lualine.lua}
-                    ${builtins.readFile ./nvim/telescope.lua}
-                    ${builtins.readFile ./nvim/git.lua}
-                    ${builtins.readFile ./nvim/keymaps.lua}
-                    ${builtins.readFile ./nvim/neoscroll.lua}
-                    ${builtins.readFile ./nvim/autopairs.lua}
-                    ${builtins.readFile ./nvim/neotree.lua}
+      ${builtins.readFile ./nvim/options.lua}
+      ${builtins.readFile ./nvim/lsp.lua}
+      ${builtins.readFile ./nvim/formatting.lua}
+      ${builtins.readFile ./nvim/completion.lua}
+      ${builtins.readFile ./nvim/treesitter.lua}
+      ${builtins.readFile ./nvim/whichkey.lua}
+      ${builtins.readFile ./nvim/lualine.lua}
+      ${builtins.readFile ./nvim/telescope.lua}
+      ${builtins.readFile ./nvim/git.lua}
+      ${builtins.readFile ./nvim/keymaps.lua}
+      ${builtins.readFile ./nvim/neoscroll.lua}
+      ${builtins.readFile ./nvim/autopairs.lua}
+      ${builtins.readFile ./nvim/neotree.lua}
     '';
   };
   programs.home-manager.enable = true;

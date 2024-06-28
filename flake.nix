@@ -15,54 +15,61 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    neovim-v0-9-5.url = "github:NixOS/nixpkgs/76ef4c7888c52bd4eed566011c24da9eb437a3c8";
   };
-  outputs = { nixpkgs, nix-darwin, nixos-hardware, lanzaboote, home-manager, ... }: {
+  outputs = { nixpkgs, nix-darwin, neovim-v0-9-5, nixos-hardware, lanzaboote, home-manager, ... }:
+    {
 
-    homeConfigurations = {
-      "will@prodesk-debian" = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs {
-          system = "x86_64-linux";
-          config = {
-            allowUnfree = true;
+      homeConfigurations = {
+        "will@prodesk-debian" = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            config = {
+              allowUnfree = true;
+            };
           };
+          modules = [ ./home.nix ];
         };
-        modules = [ ./home.nix ];
       };
-    };
 
-    nixosConfigurations = {
-      "framework" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hosts/framework/configuration.nix
-          nixos-hardware.nixosModules.framework-11th-gen-intel
-          lanzaboote.nixosModules.lanzaboote
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.will = import ./home.nix;
-          }
-        ];
+      nixosConfigurations = {
+        "framework" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosts/framework/configuration.nix
+            nixos-hardware.nixosModules.framework-11th-gen-intel
+            lanzaboote.nixosModules.lanzaboote
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.will = import ./home.nix;
+              home-manager.extraSpecialArgs = {
+                nvim-pkg = import neovim-v0-9-5 {
+                  system = "x86_64-linux";
+                };
+              };
+            }
+          ];
+        };
       };
-    };
 
-    darwinConfigurations = {
-      "macmini" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [
-          ./hosts/macmini/configuration.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.will = import ./hosts/macmini/home.nix;
-          }
-        ];
+      darwinConfigurations = {
+        "macmini" = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            ./hosts/macmini/configuration.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.will = import ./hosts/macmini/home.nix;
+            }
+          ];
+        };
       };
-    };
 
-  };
+    };
 }
