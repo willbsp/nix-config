@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     protonmail-desktop
     piper # for logitech mouse configuration
-    androidStudioPackages.dev
+    android-studio
     godot_4
     unityhub
     angryipscanner
