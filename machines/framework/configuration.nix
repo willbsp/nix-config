@@ -86,6 +86,10 @@
     wayland.enable = true;
   };
   services.desktopManager.plasma6.enable = true;
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    konsole
+    oxygen
+  ];
 
 
   # Enable CUPS to print documents.
@@ -176,6 +180,9 @@
 
   # System packages
   environment.systemPackages = with pkgs; [
+
+    # Terminal
+    kitty
 
     # Utils
     wget

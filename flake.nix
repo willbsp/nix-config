@@ -36,7 +36,7 @@
         "framework" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./hosts/framework/configuration.nix
+            ./machines/framework/configuration.nix
             nixos-hardware.nixosModules.framework-11th-gen-intel
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
@@ -44,7 +44,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.will = import ./hosts/framework/home.nix;
+              home-manager.users.will = import ./machines/framework/home.nix;
               home-manager.extraSpecialArgs = {
                 nvim-pkg = import neovim-v0-9-5 {
                   system = "x86_64-linux";
@@ -59,13 +59,13 @@
         "macmini" = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [
-            ./hosts/macmini/configuration.nix
+            ./machines/macmini/configuration.nix
             home-manager.darwinModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.will = import ./hosts/macmini/home.nix;
+              home-manager.users.will = import ./machines/macmini/home.nix;
             }
           ];
         };
