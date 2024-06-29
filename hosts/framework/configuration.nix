@@ -35,8 +35,15 @@
       "rd.systemd.show_status=false"
       "rd.udev.log_level=3"
       "udev.log_priority=3"
+      "resume_offset=130738176"
     ];
+    resumeDevice = "/dev/mapper/luks-344ad56a-0547-4cf4-94c7-c2fda50b6768";
   };
+
+  swapDevices = [{
+    device = "/var/lib/swapfile";
+    size = 48 * 1024;
+  }];
 
   # Hardware
   hardware.bluetooth.enable = true;
