@@ -44,7 +44,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.will = import ./home.nix;
+              home-manager.users.will = import ./hosts/framework/home.nix;
               home-manager.extraSpecialArgs = {
                 nvim-pkg = import neovim-v0-9-5 {
                   system = "x86_64-linux";

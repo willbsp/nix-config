@@ -51,8 +51,6 @@
   networking.hostName = "framework";
   networking.networkmanager.enable = true;
 
-  services.usbmuxd.enable = true;
-
   # Locale and time settings
   time.timeZone = "Europe/London";
   i18n.defaultLocale = "en_GB.UTF-8";
@@ -121,33 +119,21 @@
   # Fwupd
   services.fwupd.enable = true;
 
+  # For accessing iOS devices
+  services.usbmuxd.enable = true;
+
   # User account
   users.defaultUserShell = pkgs.zsh;
   users.users.will = {
     isNormalUser = true;
     description = "Will Spooner";
     extraGroups = [ "networkmanager" "wheel" "dialout" ];
-
-    packages = with pkgs; [
-      kdePackages.kate
-      kdePackages.discover
-      protonmail-desktop
-      piper # for logitech mouse configuration
-      androidStudioPackages.dev
-      godot_4
-      unityhub
-      angryipscanner
-      qflipper
-      dolphin-emu
-      rpi-imager
-    ];
   };
 
   # Disable fingerprint login (fixes SDDM stall w/ passwd)
   security.pam.services.login.fprintAuth = false;
 
   # Programs
-
   programs.firefox.enable = true;
   programs.dconf.enable = true;
   programs.kdeconnect.enable = true; # auto opens ports on firewall
@@ -195,10 +181,9 @@
     libimobiledevice
     ifuse
 
-    # Development
-    arduino-cli
-
     # Plasma related packages
+    kdePackages.kate
+    kdePackages.discover
     kdePackages.partitionmanager
     kdePackages.kde-gtk-config
     kdePackages.breeze-gtk

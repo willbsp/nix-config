@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     btop
     neofetch
+    arduino-cli
   ];
 
   home.file.".ideavimrc".source = ./ideavim/.ideavimrc;
