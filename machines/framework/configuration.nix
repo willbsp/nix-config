@@ -172,6 +172,11 @@
     vimAlias = true;
   };
 
+  programs.steam = {
+    enable = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
