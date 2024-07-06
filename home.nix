@@ -7,7 +7,6 @@
     arduino-cli
   ];
   home.file.".ideavimrc".source = ./ideavim/.ideavimrc;
-  home.file.".config/fastfetch/config.jsonc".source = ./fastfetch/config.jsonc;
   programs.git = {
     enable = true;
     userName = "willbsp";
