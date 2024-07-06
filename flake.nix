@@ -53,6 +53,25 @@
             }
           ];
         };
+        "hal" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./machines/hal/configuration.nix
+            nixos-hardware.nixosModules.common-cpu-intel-kaby-lake
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.will = import ./machines/hal/home.nix;
+              home-manager.extraSpecialArgs = {
+                nvim-pkg = import neovim-v0-9-5 {
+                  system = "x86_64-linux";
+                };
+              };
+            }
+          ];
+        };
       };
 
       darwinConfigurations = {
