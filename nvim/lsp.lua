@@ -130,5 +130,7 @@ lspconfig.nil_ls.setup {
   capabilities = capabilities,
 }
 
+lspconfig.jsonls.setup { capabilities = capabilities }
 lspconfig.arduino_language_server.setup {}
 lspconfig.gdscript.setup {}
+lspconfig.docker_compose_language_service.setup {}

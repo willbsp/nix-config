@@ -3,11 +3,11 @@
   home.stateVersion = "24.05";
   home.packages = with pkgs; [
     btop
-    neofetch
+    fastfetch
     arduino-cli
   ];
-
   home.file.".ideavimrc".source = ./ideavim/.ideavimrc;
+  home.file.".config/fastfetch/config.jsonc".source = ./fastfetch/config.jsonc;
   programs.git = {
     enable = true;
     userName = "willbsp";
@@ -48,6 +48,12 @@
       # nix language server
       nil
       nixpkgs-fmt
+
+      # docker compose language server
+      docker-compose-language-service
+
+      # vs code lang servers (for json)
+      vscode-langservers-extracted
 
       # for clipboard integration
       xclip

@@ -88,6 +88,9 @@
     vimAlias = true;
   };
 
+  # Enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -95,6 +98,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     git
+    docker-compose
   ];
 
   # Enable the OpenSSH daemon.
