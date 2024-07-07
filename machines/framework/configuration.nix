@@ -189,6 +189,9 @@
     # Terminal
     kitty
 
+    # Nextcloud client
+    nextcloud-client
+
     # Utils
     wget
     unzip
