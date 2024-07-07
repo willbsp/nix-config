@@ -22,6 +22,7 @@
 
       nixosConfigurations = {
         "framework" = nixpkgs.lib.nixosSystem {
+          # laptop
           system = "x86_64-linux";
           modules = [
             ./machines/framework/configuration.nix
@@ -42,6 +43,7 @@
           ];
         };
         "hal" = nixpkgs.lib.nixosSystem {
+          # home server
           system = "x86_64-linux";
           modules = [
             ./machines/hal/configuration.nix
@@ -52,6 +54,25 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.will = import ./machines/hal/home.nix;
+              home-manager.extraSpecialArgs = {
+                nvim-pkg = import neovim-v0-9-5 {
+                  system = "x86_64-linux";
+                };
+              };
+            }
+          ];
+        };
+        "glados" = nixpkgs.lib.nixosSystem {
+          # gaming pc
+          system = "x86_64-linux";
+          modules = [
+            ./machines/glados/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.will = import ./machines/glados/home.nix;
               home-manager.extraSpecialArgs = {
                 nvim-pkg = import neovim-v0-9-5 {
                   system = "x86_64-linux";
