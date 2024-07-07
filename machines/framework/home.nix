@@ -33,12 +33,17 @@
         "separator"
         "os"
         "kernel"
+        "board"
+        "bootmgr"
         "shell"
         "cpu"
         "gpu"
         "memory"
         "swap"
         "disk"
+        "wifi"
+        "processes"
+        "packages"
       ];
     };
   };
