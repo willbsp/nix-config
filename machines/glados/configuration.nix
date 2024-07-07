@@ -185,6 +185,7 @@
   environment.systemPackages = with pkgs; [
     sunshine
     jellyfin-media-player
+    prismlauncher
   ];
 
   # Enable the OpenSSH daemon.
