@@ -204,6 +204,7 @@
     ifuse
 
     # Plasma related packages
+    kdePackages.krdc
     kdePackages.kate
     kdePackages.discover
     kdePackages.partitionmanager
