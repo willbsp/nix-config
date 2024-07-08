@@ -22,27 +22,10 @@
   networking.hostName = "glados"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/London";
-
   # Mount hard drive
   fileSystems."/mnt/bulk" = {
     device = "/dev/disk/by-uuid/b1f7e7f5-6951-4043-8345-2a1fa4ae7f94";
     fsType = "ext4";
-  };
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_GB.UTF-8";
-    LC_IDENTIFICATION = "en_GB.UTF-8";
-    LC_MEASUREMENT = "en_GB.UTF-8";
-    LC_MONETARY = "en_GB.UTF-8";
-    LC_NAME = "en_GB.UTF-8";
-    LC_NUMERIC = "en_GB.UTF-8";
-    LC_PAPER = "en_GB.UTF-8";
-    LC_TELEPHONE = "en_GB.UTF-8";
-    LC_TIME = "en_GB.UTF-8";
   };
 
   # Bluetooth
@@ -60,11 +43,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
 
   # Sunshine game streaming
   services.udev.packages = [ pkgs.sunshine ]; # allow access to create virtual input interfaces.
@@ -101,7 +79,6 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.defaultUserShell = pkgs.zsh;
   users.users.will = {
     isNormalUser = true;
     description = "Will Spooner";
@@ -157,24 +134,6 @@
     nvidiaSettings = true;
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    ohMyZsh = {
-      enable = true;
-      plugins = [ "git" "python" "man" ];
-      theme = "gentoo";
-    };
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
   };
 
   programs.steam = {

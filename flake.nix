@@ -69,8 +69,10 @@
         "glados" = nixpkgs.lib.nixosSystem {
           # gaming pc
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./machines/glados/configuration.nix
+            ./nixos-modules
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
