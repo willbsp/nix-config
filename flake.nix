@@ -45,8 +45,10 @@
         };
         "hal" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./machines/hal/configuration.nix
+            ./nixos-modules
             nixos-hardware.nixosModules.common-cpu-intel-kaby-lake
             home-manager.nixosModules.home-manager
             {

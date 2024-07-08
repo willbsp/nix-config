@@ -2,13 +2,17 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
     ];
+
+  # Modules
+  zsh.enable = true;
+  nvim.enable = true;
 
   # Bootloader
   boot = {
@@ -60,7 +64,6 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.defaultUserShell = pkgs.zsh;
   users.users.will = {
     isNormalUser = true;
     description = "Will Spooner";
@@ -69,24 +72,6 @@
 
   # Docker
   virtualisation.docker.enable = true;
-
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    ohMyZsh = {
-      enable = true;
-      plugins = [ "git" "python" "man" ];
-      theme = "gentoo";
-    };
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
