@@ -9,6 +9,10 @@
       ./hardware-configuration.nix
     ];
 
+  # Enable modules
+  zsh.enable = true;
+  nvim.enable = true;
+
   # Bootloader
   boot = {
     initrd = {
@@ -134,7 +138,6 @@
   services.usbmuxd.enable = true;
 
   # User account
-  users.defaultUserShell = pkgs.zsh;
   users.users.will = {
     isNormalUser = true;
     description = "Will Spooner";
@@ -154,23 +157,6 @@
     plasma-dark = "plasma-apply-colorscheme BreezeDark";
   };
 
-  programs.zsh = {
-    enable = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    ohMyZsh = {
-      enable = true;
-      plugins = [ "git" "python" "man" ];
-      theme = "gentoo";
-    };
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
 
   programs.steam = {
     enable = true;
