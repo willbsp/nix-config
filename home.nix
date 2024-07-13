@@ -24,6 +24,7 @@
       remember_window_size = false;
       initial_window_width = "127c";
       initial_window_height = "50c";
+      confirm_os_window_close = 0;
     };
   };
   programs.neovim = {
