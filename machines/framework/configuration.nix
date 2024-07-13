@@ -185,9 +185,10 @@
     networkmanagerapplet
     pwvucontrol
     loupe
-    gnome.nautilus
+    nautilus
     mpv-unwrapped
     moonlight-qt
+    gnome-system-monitor
 
     # Utils
     wget
