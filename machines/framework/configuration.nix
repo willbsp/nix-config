@@ -61,17 +61,11 @@
   # X server
   services.xserver.enable = true;
 
-  # KDE Plasma and SDDM
-  services.displayManager.sddm = {
+  # Gnome display manager
+  services.xserver.displayManager.gdm = {
     enable = true;
-    wayland.enable = true;
+    wayland = true;
   };
-  services.desktopManager.plasma6.enable = true;
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    konsole
-    oxygen
-  ];
-
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -107,6 +101,8 @@
 
   # Flatpak
   services.flatpak.enable = true;
+  xdg.portal.enable = true;
+  xdg.autostart.enable = true;
 
   # Fwupd
   services.fwupd.enable = true;
@@ -118,22 +114,47 @@
   users.users.will = {
     isNormalUser = true;
     description = "Will Spooner";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "video" ];
   };
 
-  # Disable fingerprint login (fixes SDDM stall w/ passwd)
-  security.pam.services.login.fprintAuth = false;
+  # Sway window manager
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraPackages = with pkgs; [
+
+      swaylock # screen lock
+      swayidle # screen idle
+      sway-contrib.grimshot # screenshot tool
+      wl-clipboard # wayland clipboard
+      mako # notification system
+
+      i3blocks # for status bar
+      acpi # for battery percentage in status bar
+      alsa-utils # for volume in status bar
+      pulseaudioFull # for pactl volume control
+
+      kitty # term
+      rofi-wayland # menu
+
+    ];
+  };
+
+  # For sway volume and brightness keys
+  programs.light.enable = true;
+
+  # Enable keyring
+  security.polkit.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+  services.gnome.gnome-keyring.enable = true;
+
+  # Enable wayland support in chromium and electron applications
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Programs
   programs.firefox.enable = true;
   programs.dconf.enable = true;
   programs.kdeconnect.enable = true; # auto opens ports on firewall
-
-  environment.shellAliases = {
-    plasma-light = "plasma-apply-colorscheme BreezeLight";
-    plasma-dark = "plasma-apply-colorscheme BreezeDark";
-  };
-
 
   programs.steam = {
     enable = true;
@@ -146,38 +167,47 @@
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Font packages
+  fonts.packages = with pkgs; [
+    cantarell-fonts # gnome font
+  ];
+
   # System packages
   environment.systemPackages = with pkgs; [
 
-    # Terminal
-    kitty
-
     # Nextcloud client
-    nextcloud-client
+    #nextcloud-client
+
+    # For sway TODO move to extraPackages []
+    networkmanagerapplet
+    pwvucontrol
+    loupe
+    gnome.nautilus
+    mpv-unwrapped
+    moonlight-qt
 
     # Utils
     wget
     unzip
     gcc
     sbctl
-    wl-clipboard
 
     # For accessing iOS devices
     libimobiledevice
     ifuse
 
     # Plasma related packages
-    kdePackages.krdc
-    kdePackages.kate
-    kdePackages.discover
-    kdePackages.partitionmanager
-    kdePackages.kde-gtk-config
-    kdePackages.breeze-gtk
-    (catppuccin-kde.override {
-      flavour = [ "frappe" "latte" ];
-      accents = [ "blue" ];
-    })
-    aha # for firmware security tab in plasma
+    #kdePackages.krdc
+    #kdePackages.kate
+    #kdePackages.discover
+    #kdePackages.partitionmanager
+    #kdePackages.kde-gtk-config
+    #kdePackages.breeze-gtk
+    #(catppuccin-kde.override {
+    #  flavour = [ "frappe" "latte" ];
+    #  accents = [ "blue" ];
+    #})
+    #aha # for firmware security tab in plasma
 
   ];
 
