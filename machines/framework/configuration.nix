@@ -110,6 +110,9 @@
   # For accessing iOS devices
   services.usbmuxd.enable = true;
 
+  # Power profiles daemon
+  services.power-profiles-daemon.enable = true;
+
   # User account
   users.users.will = {
     isNormalUser = true;
