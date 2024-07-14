@@ -145,22 +145,6 @@
         "type": "github"
       }
     },
-    "neovim-v0-9-5": {
-      "locked": {
-        "lastModified": 1716305505,
-        "narHash": "sha256-YY7Hy9gYC7SCEznoMbD6n3EqMclYoGelwqsTnTnSM1c=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "76ef4c7888c52bd4eed566011c24da9eb437a3c8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "76ef4c7888c52bd4eed566011c24da9eb437a3c8",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -260,7 +244,6 @@
       "inputs": {
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
-        "neovim-v0-9-5": "neovim-v0-9-5",
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs"

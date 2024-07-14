@@ -1,5 +1,4 @@
 { pkgs, lib, ... }: {
-  imports = [ ../../home.nix ];
 
   home.file.".zshrc".source = ./zsh/.zshrc;
   home.file.".config/fastfetch/logo.jpg".source = ./fastfetch/spot.jpg;

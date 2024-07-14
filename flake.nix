@@ -73,10 +73,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.will.imports = [
-                ./hm-modules
-                ./machines/glados/home.nix
-              ];
+              home-manager.users.will.imports = [ ./hm-modules ];
             }
           ];
         };
