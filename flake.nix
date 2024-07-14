@@ -31,11 +31,15 @@
             nixos-hardware.nixosModules.framework-11th-gen-intel
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
+            home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.will = import ./machines/framework/home.nix;
+              home-manager.users.will.imports = [
+                ./hm-modules
+                ./machines/framework/home.nix
+              ];
               home-manager.extraSpecialArgs = {
                 nvim-pkg = import neovim-v0-9-5 {
                   system = "x86_64-linux";
@@ -57,7 +61,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.will = import ./machines/hal/home.nix;
+              home-manager.users.will.imports = [
+                ./hm-modules
+                ./machines/hal/home.nix
+              ];
               home-manager.extraSpecialArgs = {
                 nvim-pkg = import neovim-v0-9-5 {
                   system = "x86_64-linux";
@@ -78,7 +85,10 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.will = import ./machines/glados/home.nix;
+              home-manager.users.will.imports = [
+                ./hm-modules
+                ./machines/glados/home.nix
+              ];
               home-manager.extraSpecialArgs = {
                 nvim-pkg = import neovim-v0-9-5 {
                   system = "x86_64-linux";
