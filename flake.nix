@@ -40,11 +40,6 @@
                 ./hm-modules
                 ./machines/framework/home.nix
               ];
-              home-manager.extraSpecialArgs = {
-                nvim-pkg = import neovim-v0-9-5 {
-                  system = "x86_64-linux";
-                };
-              };
             }
           ];
         };

@@ -1,4 +1,4 @@
-{ pkgs, nvim-pkg, ... }: {
+{ pkgs, ... }: {
   home.username = "will";
   home.stateVersion = "24.05";
   home.packages = with pkgs; [
@@ -29,7 +29,6 @@
   };
   programs.neovim = {
     enable = true;
-    package = nvim-pkg.neovim-unwrapped;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
