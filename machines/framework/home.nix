@@ -3,6 +3,11 @@
 
   home.file.".zshrc".source = ./zsh/.zshrc;
   home.file.".config/fastfetch/logo.jpg".source = ./fastfetch/spot.jpg;
+  xdg.configFile."sway/config".source = ./sway/config;
+  xdg.configFile."i3blocks/config".source = ./i3blocks/config;
+  xdg.configFile."i3blocks/scripts/battery".source = ./i3blocks/scripts/battery;
+  xdg.configFile."i3blocks/scripts/volume".source = ./i3blocks/scripts/volume;
+  xdg.configFile."i3blocks/scripts/memory".source = ./i3blocks/scripts/memory;
 
   home.packages = with pkgs; [
     protonmail-desktop
@@ -15,6 +20,17 @@
     dolphin-emu
     rpi-imager
   ];
+
+  # for sway
+  home.pointerCursor = {
+    name = "Adwaita";
+    package = pkgs.adwaita-icon-theme;
+    size = 24;
+    x11 = {
+      enable = true;
+      defaultCursor = "Adwaita";
+    };
+  };
 
   programs.fastfetch = {
     enable = true;
@@ -33,12 +49,17 @@
         "separator"
         "os"
         "kernel"
+        "board"
+        "bootmgr"
         "shell"
         "cpu"
         "gpu"
         "memory"
         "swap"
         "disk"
+        "wifi"
+        "processes"
+        "packages"
       ];
     };
   };

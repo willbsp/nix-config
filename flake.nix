@@ -17,22 +17,29 @@
     };
     neovim-v0-9-5.url = "github:NixOS/nixpkgs/76ef4c7888c52bd4eed566011c24da9eb437a3c8";
   };
-  outputs = { nixpkgs, nix-darwin, neovim-v0-9-5, nixos-hardware, lanzaboote, home-manager, ... }:
+  outputs = { nixpkgs, nix-darwin, neovim-v0-9-5, nixos-hardware, lanzaboote, home-manager, ... }@inputs:
     {
 
       nixosConfigurations = {
         "framework" = nixpkgs.lib.nixosSystem {
+          # laptop
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./machines/framework/configuration.nix
+            ./nixos-modules
             nixos-hardware.nixosModules.framework-11th-gen-intel
             lanzaboote.nixosModules.lanzaboote
+            home-manager.nixosModules.home-manager
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.will = import ./machines/framework/home.nix;
+              home-manager.users.will.imports = [
+                ./hm-modules
+                ./machines/framework/home.nix
+              ];
               home-manager.extraSpecialArgs = {
                 nvim-pkg = import neovim-v0-9-5 {
                   system = "x86_64-linux";
@@ -42,16 +49,46 @@
           ];
         };
         "hal" = nixpkgs.lib.nixosSystem {
+          # home server
           system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
           modules = [
             ./machines/hal/configuration.nix
+            ./nixos-modules
             nixos-hardware.nixosModules.common-cpu-intel-kaby-lake
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.will = import ./machines/hal/home.nix;
+              home-manager.users.will.imports = [
+                ./hm-modules
+                ./machines/hal/home.nix
+              ];
+              home-manager.extraSpecialArgs = {
+                nvim-pkg = import neovim-v0-9-5 {
+                  system = "x86_64-linux";
+                };
+              };
+            }
+          ];
+        };
+        "glados" = nixpkgs.lib.nixosSystem {
+          # gaming pc
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./machines/glados/configuration.nix
+            ./nixos-modules
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.will.imports = [
+                ./hm-modules
+                ./machines/glados/home.nix
+              ];
               home-manager.extraSpecialArgs = {
                 nvim-pkg = import neovim-v0-9-5 {
                   system = "x86_64-linux";
