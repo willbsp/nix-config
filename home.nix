@@ -3,7 +3,6 @@
   home.stateVersion = "24.05";
   home.packages = with pkgs; [
     btop
-    fastfetch
     arduino-cli
   ];
   programs.git = {
