@@ -4,7 +4,7 @@
       lib.mkEnableOption "Enables sway configuration";
   };
 
-  config = lib.mkIf config.kitty.enable
+  config = lib.mkIf config.sway.enable
     {
       xdg.configFile."sway/config".source = ./sway/config;
       xdg.configFile."i3blocks/config".source = ./i3blocks/config;
