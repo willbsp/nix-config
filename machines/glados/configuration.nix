@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, config, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   imports =
@@ -21,6 +21,7 @@
   # Networking
   networking.hostName = "glados"; # Define your hostname.
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false; # prevent rebuilds failing
 
   # Mount hard drive
   fileSystems."/mnt/bulk" = {

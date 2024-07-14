@@ -48,7 +48,7 @@
           modules = [
             ./machines/hal/configuration.nix
             ./nixos-modules
-            nixos-hardware.nixosModules.common-cpu-intel-kaby-lake
+            nixos-hardware.nixosModules.common-cpu-intel-cpu-only
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
