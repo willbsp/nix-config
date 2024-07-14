@@ -49,6 +49,9 @@
       nil
       nixpkgs-fmt
 
+      # bash language server
+      nodePackages.bash-language-server
+
       # docker compose language server
       docker-compose-language-service
 

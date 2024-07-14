@@ -5,9 +5,10 @@
   home.file.".config/fastfetch/logo.jpg".source = ./fastfetch/spot.jpg;
   xdg.configFile."sway/config".source = ./sway/config;
   xdg.configFile."i3blocks/config".source = ./i3blocks/config;
-  xdg.configFile."i3blocks/scripts/battery".source = ./i3blocks/scripts/battery;
-  xdg.configFile."i3blocks/scripts/volume".source = ./i3blocks/scripts/volume;
-  xdg.configFile."i3blocks/scripts/memory".source = ./i3blocks/scripts/memory;
+  xdg.configFile."i3blocks/scripts/battery".source = ./i3blocks/scripts/battery.sh;
+  xdg.configFile."i3blocks/scripts/volume".source = ./i3blocks/scripts/volume.sh;
+  xdg.configFile."i3blocks/scripts/memory".source = ./i3blocks/scripts/memory.sh;
+  xdg.configFile."i3blocks/scripts/powerprofiles".source = ./i3blocks/scripts/powerprofiles.sh;
 
   home.packages = with pkgs; [
     protonmail-desktop

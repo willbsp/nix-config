@@ -30,6 +30,11 @@ command=~/.config/i3blocks/scripts/$BLOCK_NAME
 separator_block_width=25
 markup=none
 
+[powerprofiles]
+label=profile 
+separator=true
+interval=5
+signal=11
 
 # Memory usage
 #
@@ -37,7 +42,7 @@ markup=none
 [memory]
 label=mem 
 separator=true
-interval=30
+interval=5
 
 #[memory]
 #label=SWAP
@@ -95,7 +100,7 @@ interval=30
 [battery]
 label=bat 
 #label=⚡
-interval=15
+interval=5
 BAT_NUMBER=1
 
 # Volume indicator
@@ -109,7 +114,7 @@ BAT_NUMBER=1
 label=vol 
 interval=5
 signal=10
-#STEP=5%
+STEP=5%
 #MIXER=pulse
 
 # Date Time

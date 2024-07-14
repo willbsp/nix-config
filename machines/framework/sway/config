@@ -28,9 +28,8 @@ set $bg /home/will/Pictures/Wallpapers/gregoire-thibaud-LH3HxtPfzXs-unsplash.jpg
 set $lock_cmd "swaylock -f -i $bg"
 
 # Clamshell mode configuration
-set $laptop_output "BOE 0x095F Unknown"
-bindswitch --reload --locked lid:on output $laptop_output disable
-bindswitch --reload --locked lid:off output $laptop_output enable
+bindswitch --reload --locked lid:on output eDP-1 disable
+bindswitch --reload --locked lid:off output eDP-1 enable
 
 ### Output configuration
 #
@@ -44,8 +43,10 @@ output * bg $bg fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output eDP-1 scale 1.5
-output DP-1 scale 1.5
+font pango:Terminus Regular 14
+
+output eDP-1 scale 1.5 position 0 0 subpixel none
+output "Samsung Electric Company LU28R55 HNMW500573" scale 1.5 position 1504 0 subpixel none
 
 gaps inner 10
 smart_gaps on
@@ -58,9 +59,15 @@ bindsym XF86MonBrightnessUp exec light -A 10
 
 # Volume
 # after && updates the status bar where RTMIN is the signal
-bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks' 
-bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -5% && pkill -RTMIN+10 i3blocks'
+bindsym XF86AudioRaiseVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ +1% && pkill -RTMIN+10 i3blocks' 
+bindsym XF86AudioLowerVolume exec 'pactl set-sink-volume @DEFAULT_SINK@ -1% && pkill -RTMIN+10 i3blocks'
 bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks'
+
+# Media
+bindsym XF86AudioPlay exec 'playerctl play-pause'
+bindsym XF86AudioPause exec 'playerctl play-pause'
+bindsym XF86AudioNext exec 'playerctl next'
+bindsym XF86AudioPrev exec 'playerctl previous'
 
 ### Idle configuration
 #
@@ -68,7 +75,7 @@ bindsym XF86AudioMute exec 'pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -
 #
  exec swayidle -w \
           timeout 300 $lock_cmd \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 1800 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep $lock_cmd
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off

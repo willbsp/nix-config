@@ -57,6 +57,7 @@
   # Networking
   networking.hostName = "framework";
   networking.networkmanager.enable = true;
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false; # prevent rebuilds failing
 
   # X server
   services.xserver.enable = true;
@@ -136,6 +137,7 @@
       acpi # for battery percentage in status bar
       alsa-utils # for volume in status bar
       pulseaudioFull # for pactl volume control
+      playerctl # for media controls
 
       kitty # term
       rofi-wayland # menu
@@ -173,6 +175,9 @@
   # Font packages
   fonts.packages = with pkgs; [
     cantarell-fonts # gnome font
+    terminus_font
+    terminus_font_ttf
+    source-code-pro
   ];
 
   # System packages
