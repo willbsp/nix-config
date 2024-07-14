@@ -3,6 +3,11 @@
 
   home.file.".zshrc".source = ./zsh/.zshrc;
   home.file.".config/fastfetch/logo.jpg".source = ./fastfetch/spot.jpg;
+  xdg.configFile."sway/config".source = ./sway/config;
+  xdg.configFile."i3blocks/config".source = ./i3blocks/config;
+  xdg.configFile."i3blocks/scripts/battery".source = ./i3blocks/scripts/battery;
+  xdg.configFile."i3blocks/scripts/volume".source = ./i3blocks/scripts/volume;
+  xdg.configFile."i3blocks/scripts/memory".source = ./i3blocks/scripts/memory;
 
   home.packages = with pkgs; [
     protonmail-desktop

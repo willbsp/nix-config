@@ -183,12 +183,13 @@
 
     # For sway TODO move to extraPackages []
     networkmanagerapplet
-    pwvucontrol
-    loupe
-    nautilus
+    pwvucontrol # pipewire equivalent of pavucontrol
+    loupe # gnome image viewer
+    nautilus # file manager
     mpv-unwrapped
     moonlight-qt
     gnome-system-monitor
+    blueberry # for configuring bluetooth
 
     # Utils
     wget
