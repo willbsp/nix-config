@@ -84,6 +84,7 @@
   environment.systemPackages = with pkgs; [
     git
     docker-compose
+    wakeonlan
   ];
 
   # Enable the OpenSSH daemon.

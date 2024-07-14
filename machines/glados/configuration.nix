@@ -54,6 +54,7 @@
       { from = 8000; to = 8010; }
     ];
   };
+  networking.interfaces."enp3s0".wakeOnLan.enable = true;
   security.wrappers.sunshine = {
     owner = "root";
     group = "root";
