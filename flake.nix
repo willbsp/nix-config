@@ -15,9 +15,8 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-v0-9-5.url = "github:NixOS/nixpkgs/76ef4c7888c52bd4eed566011c24da9eb437a3c8";
   };
-  outputs = { nixpkgs, nix-darwin, neovim-v0-9-5, nixos-hardware, lanzaboote, home-manager, ... }@inputs:
+  outputs = { nixpkgs, nix-darwin, nixos-hardware, lanzaboote, home-manager, ... }@inputs:
     {
 
       nixosConfigurations = {
@@ -30,7 +29,6 @@
             ./nixos-modules
             nixos-hardware.nixosModules.framework-11th-gen-intel
             lanzaboote.nixosModules.lanzaboote
-            home-manager.nixosModules.home-manager
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -60,11 +58,6 @@
                 ./hm-modules
                 ./machines/hal/home.nix
               ];
-              home-manager.extraSpecialArgs = {
-                nvim-pkg = import neovim-v0-9-5 {
-                  system = "x86_64-linux";
-                };
-              };
             }
           ];
         };
@@ -84,11 +77,6 @@
                 ./hm-modules
                 ./machines/glados/home.nix
               ];
-              home-manager.extraSpecialArgs = {
-                nvim-pkg = import neovim-v0-9-5 {
-                  system = "x86_64-linux";
-                };
-              };
             }
           ];
         };
