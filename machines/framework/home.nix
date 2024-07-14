@@ -1,9 +1,9 @@
 { pkgs, ... }: {
 
-  home.file.".zshrc".source = ./zsh/.zshrc;
+  #home.file.".zshrc".source = ./zsh/.zshrc;
   home.file.".config/fastfetch/logo.jpg".source = ./fastfetch/spot.jpg;
 
-  sway.enable = true; # enable sway configuration
+  sway.enable = true; # enable sway configuration module
 
   home.packages = with pkgs; [
     protonmail-desktop
@@ -16,6 +16,16 @@
     dolphin-emu
     rpi-imager
   ];
+
+  programs.zsh.enable = true;
+  programs.zsh.initExtra = "fastfetch";
+
+  home.shellAliases = {
+    nixdir = "cd /etc/nixos";
+    nixconf = "nixdir; nvim machines/framework/configuration.nix";
+    swayconf = "nixdir; nvim hm-modules/sway/sway/config";
+    nvimconf = "nixdir; nvim hm-modules/nvim/nvim.nix";
+  };
 
   # for sway
   home.pointerCursor = {
