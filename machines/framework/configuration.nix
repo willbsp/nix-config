@@ -196,6 +196,7 @@
     moonlight-qt
     gnome-system-monitor
     blueberry # for configuring bluetooth
+    gnome-disk-utility
 
     # Utils
     wget
