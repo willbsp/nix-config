@@ -15,8 +15,12 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    kmonad = {
+      url = "git+https://github.com/kmonad/kmonad?submodules=1&dir=nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { nixpkgs, nix-darwin, nixos-hardware, lanzaboote, home-manager, ... }@inputs:
+  outputs = { nixpkgs, nix-darwin, nixos-hardware, lanzaboote, home-manager, kmonad, ... }@inputs:
     {
 
       nixosConfigurations = {
@@ -29,6 +33,7 @@
             ./nixos-modules
             nixos-hardware.nixosModules.framework-11th-gen-intel
             lanzaboote.nixosModules.lanzaboote
+            kmonad.nixosModules.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

@@ -45,6 +45,20 @@
     size = 48 * 1024;
   }];
 
+  services.kmonad = {
+    enable = true;
+    keyboards = {
+      kmonad-keyboard = {
+        device = "/dev/input/by-id/usb-SEMITEK_USB-HID_Gaming_Keyboard_SN0000000001-event-kbd";
+        config = builtins.readFile ./config-kb.kbd;
+      };
+      laptop-keyboard = {
+        device = "/dev/input/by-path/platform-i8042-serio-0-event-kbd";
+        config = builtins.readFile ./config.kbd;
+      };
+    };
+  };
+
   # Hardware
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -121,7 +135,7 @@
   users.users.will = {
     isNormalUser = true;
     description = "Will Spooner";
-    extraGroups = [ "networkmanager" "wheel" "dialout" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "video" "input" "uinput" ];
   };
 
   # Sway window manager

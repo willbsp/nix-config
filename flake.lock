@@ -118,6 +118,30 @@
         "type": "github"
       }
     },
+    "kmonad": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "dir": "nix",
+        "lastModified": 1720421296,
+        "narHash": "sha256-I6G8qYd7SMZ3j7+nQVeXJr4dtmRV8DLl1SV3vzN1wxQ=",
+        "ref": "refs/heads/master",
+        "rev": "97a3dea051a3565e97f2bdde60473a2d78182b07",
+        "revCount": 805,
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/kmonad/kmonad?dir=nix"
+      },
+      "original": {
+        "dir": "nix",
+        "submodules": true,
+        "type": "git",
+        "url": "https://github.com/kmonad/kmonad?dir=nix"
+      }
+    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -243,6 +267,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "kmonad": "kmonad",
         "lanzaboote": "lanzaboote",
         "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
