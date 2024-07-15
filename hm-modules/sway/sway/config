@@ -5,6 +5,8 @@
 # Read `man 5 sway` for a complete reference.
 
 exec nm-applet --indicator
+exec flatpak run org.signal.Signal
+exec flatpak run sh.cider.Cider
 
 ### Variables
 #
@@ -21,10 +23,9 @@ set $browser firefox
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-#set $menu dmenu_path | wmenu | xargs swaymsg exec --
-set $menu rofi -show drun
-set $bg /home/will/Pictures/Wallpapers/gregoire-thibaud-LH3HxtPfzXs-unsplash.jpg
+set $menu rofi -show drun | xargs swaymsg exec --
 
+set $bg /home/will/Pictures/Wallpapers/gregoire-thibaud-LH3HxtPfzXs-unsplash.jpg
 set $lock_cmd "swaylock -f -i $bg"
 
 # Clamshell mode configuration
@@ -32,21 +33,20 @@ bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
 
 ### Output configuration
-#
 # Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
 #output * bg /run/current-system/sw/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 output * bg $bg fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+output eDP-1 scale 1.5 position 0 0 subpixel none
+output "Samsung Electric Company LU28R55 HNMW500573" scale 1.5 position 1504 0 subpixel none
 
 font pango:Terminus Regular 14
 
-output eDP-1 scale 1.5 position 0 0 subpixel none
-output "Samsung Electric Company LU28R55 HNMW500573" scale 1.5 position 1504 0 subpixel none
+
+# show if window is xwayland in title
+for_window [shell="xwayland"] title_format "[XWayland] %title"
+
+# default floating windows
+for_window [app_id="blueberry.py"] floating enable
 
 gaps inner 10
 smart_gaps on
@@ -54,8 +54,8 @@ smart_borders on
 default_border pixel 3
 
 # Brightness
-bindsym XF86MonBrightnessDown exec light -U 10
-bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 2
+bindsym XF86MonBrightnessUp exec light -A 2
 
 # Volume
 # after && updates the status bar where RTMIN is the signal
@@ -74,8 +74,8 @@ bindsym XF86AudioPrev exec 'playerctl previous'
 # Example configuration:
 #
  exec swayidle -w \
-          timeout 300 $lock_cmd \
-          timeout 1800 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+          timeout 600 $lock_cmd \
+          timeout 3600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
           before-sleep $lock_cmd
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
@@ -221,7 +221,9 @@ input type:keyboard {
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 
-
+    # auto move windows to the scratchpad
+    for_window [class="Cider"] move scratchpad
+    for_window [class="Signal"] move scratchpad
 
     bindsym $mod+Shift+Escape exec $lock_cmd
     bindsym $mod+Shift+e exec nautilus -w
