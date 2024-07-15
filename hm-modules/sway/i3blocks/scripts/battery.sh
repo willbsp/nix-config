@@ -1,94 +1,65 @@
-#!/usr/bin/env perl
-#
-# Copyright 2014 Pierre Mavro <deimos@deimos.fr>
-# Copyright 2014 Vivien Didelot <vivien@didelot.org>
-#
-# Licensed under the terms of the GNU GPL v3, or any later version.
-#
-# This script is meant to use with i3blocks. It parses the output of the "acpi"
-# command (often provided by a package of the same name) to read the status of
-# the battery, and eventually its remaining time (to full charge or discharge).
-#
-# The color will gradually change for a percentage below 85%, and the urgency
-# (exit code 33) is set if there is less that 5% remaining.
+#!/usr/bin/env bash
 
-use strict;
-use warnings;
-use utf8;
+PSET="powerprofilesctl set"
+PGET="powerprofilesctl get"
 
-my $acpi;
-my $status;
-my $percent;
-my $ac_adapt;
-my $full_text;
-my $short_text;
-my $bat_number = $ENV{BAT_NUMBER} || 0;
-my $label = $ENV{LABEL} || "";
+BATTERY_STATE=$(echo "${BATTERY_INFO}" | upower -i $(upower -e | grep 'battery_BAT') | grep -E "state|to\ full" | awk '{print $2}')
+BATTERY_POWER=$(echo "${BATTERY_INFO}" | upower -i $(upower -e | grep 'battery_BAT') | grep -E "percentage" | awk '{print $2}' | tr -d '%')
+URGENT_VALUE=10
 
-# read the first line of the "acpi" command output
-open (ACPI, "acpi -b 2>/dev/null| grep 'Battery $bat_number' |") or die;
-$acpi = <ACPI>;
-close(ACPI);
+if [[ "${BATTERY_POWER}" -gt 85 ]]; then
+    TEXT_COLOUR="#A8FF00"
+elif [[ "${BATTERY_POWER}" -gt 60 ]]; then
+    TEXT_COLOUR="#FFF600"
+elif [[ "${BATTERY_POWER}" -gt 40 ]]; then
+    TEXT_COLOUR="#FFAE00"
+elif [[ "${BATTERY_POWER}" -gt 20 ]]; then
+    TEXT_COLOUR="#FF0000"
+else
+    TEXT_COLOUR=""
+fi
 
-# fail on unexpected output
-if (not defined($acpi)) {
-    # don't print anything to stderr if there is no battery
-    exit(0);
-}
-elsif ($acpi !~ /: ([\w\s]+), (\d+)%/) {
-	die "$acpi\n";
+toggle() {
+  case $($PGET) in
+    performance)
+      $PSET power-saver
+    ;;
+    power-saver)
+      $PSET balanced
+    ;;
+    balanced)
+      $PSET performance
+    ;;
+  esac
 }
 
-$status = $1;
-$percent = $2;
-$full_text = "$label$percent%";
+case $BLOCK_BUTTON in
+  1) toggle # left click
+esac
 
-if ($status eq 'Discharging') {
-	$full_text .= ' DIS';
-} elsif ($status eq 'Charging') {
-	$full_text .= ' CHR';
-} elsif ($status eq 'Unknown') {
-	open (AC_ADAPTER, "acpi -a |") or die;
-	$ac_adapt = <AC_ADAPTER>;
-	close(AC_ADAPTER);
+case $($PGET) in
+  performance)
+    BATTERY_PROFILE_TEXT="perf"
+  ;;
+  power-saver)
+    BATTERY_PROFILE_TEXT="save"
+  ;;
+  balanced)
+    BATTERY_PROFILE_TEXT="bal"
+esac
 
-	if ($ac_adapt =~ /: ([\w-]+)/) {
-		$ac_adapt = $1;
+if [[ "${BATTERY_STATE}" = "discharging" ]]; then
+    BATTERY_STATE_TEXT="dis"
+elif [[ "${BATTERY_STATE}" = "fully-charged" ]]; then
+    BATTERY_STATE_TEXT="full"
+fi
 
-		if ($ac_adapt eq 'on-line') {
-			$full_text .= ' CHR';
-		} elsif ($ac_adapt eq 'off-line') {
-			$full_text .= ' DIS';
-		}
-	}
-}
+echo "${BATTERY_POWER}% [${BATTERY_STATE_TEXT}] [${BATTERY_PROFILE_TEXT}]"
+echo "${BATTERY_POWER}% [${BATTERY_STATE_TEXT}] [${BATTERY_PROFILE_TEXT}]"
+echo "${TEXT_COLOUR}"
 
-$short_text = $full_text;
+if [[ "${BATTERY_POWER}" -le "${URGENT_VALUE}" ]]; then
+  exit 33
+fi
 
-if ($acpi =~ /(\d\d:\d\d):/) {
-	$full_text .= " ($1)";
-}
-
-# print text
-print "$full_text\n";
-print "$short_text\n";
-
-# consider color and urgent flag only on discharge
-if ($status eq 'Discharging') {
-
-	if ($percent < 20) {
-		print "#FF0000\n";
-	} elsif ($percent < 40) {
-		print "#FFAE00\n";
-	} elsif ($percent < 60) {
-		print "#FFF600\n";
-	} elsif ($percent < 85) {
-		print "#A8FF00\n";
-	}
-
-	if ($percent < 5) {
-		exit(33);
-	}
-}
-
-exit(0);
+exit 0

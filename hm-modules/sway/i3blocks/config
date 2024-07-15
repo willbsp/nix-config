@@ -30,11 +30,7 @@ command=~/.config/i3blocks/scripts/$BLOCK_NAME
 separator_block_width=25
 markup=none
 
-[powerprofiles]
-label=profile 
-separator=true
-interval=5
-signal=11
+
 
 # Memory usage
 #
@@ -99,9 +95,15 @@ interval=5
 # The battery instance defaults to 0.
 [battery]
 label=bat 
-#label=⚡
 interval=5
-BAT_NUMBER=1
+separator=true
+signal=11
+
+#[powerprofiles]
+#label=
+#separator=true
+#interval=5
+#signal=11
 
 # Volume indicator
 #

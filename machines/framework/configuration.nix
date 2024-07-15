@@ -59,6 +59,9 @@
   networking.networkmanager.enable = true;
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false; # prevent rebuilds failing
 
+  # UPower
+  services.upower.enable = true;
+
   # X server
   services.xserver.enable = true;
 
