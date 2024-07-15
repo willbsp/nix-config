@@ -53,6 +53,9 @@ smart_gaps on
 smart_borders on
 default_border pixel 3
 
+# class             border  backgr  text
+client.focused      #74bbf2 #285577 #ffffff
+
 # Brightness
 bindsym XF86MonBrightnessDown exec light -U 2
 bindsym XF86MonBrightnessUp exec light -A 2

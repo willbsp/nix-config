@@ -30,11 +30,15 @@ command=~/.config/i3blocks/scripts/$BLOCK_NAME
 separator_block_width=25
 markup=none
 
-
-
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
+
+[load_average]
+label=loadavg 
+separator=true
+interval=5
+
 [memory]
 label=mem 
 separator=true
