@@ -38,6 +38,13 @@
     };
   };
 
+  # match libadaita apps
+  gtk.enable = true;
+  gtk.theme = {
+    name = "adw-gtk3";
+    package = pkgs.adw-gtk3;
+  };
+
   programs.fastfetch = {
     enable = true;
     settings = {
