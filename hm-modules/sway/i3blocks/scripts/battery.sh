@@ -3,7 +3,7 @@
 PSET="powerprofilesctl set"
 PGET="powerprofilesctl get"
 
-BATTERY_STATE=$(echo "${BATTERY_INFO}" | upower -i $(upower -e | grep 'battery_BAT') | grep -E "state|to\ full" | awk '{print $2}')
+BATTERY_STATE=$(echo "${BATTERY_INFO}" | upower -i $(upower -e | grep 'battery_BAT') | grep -E "state" | awk '{print $2}')
 BATTERY_POWER=$(echo "${BATTERY_INFO}" | upower -i $(upower -e | grep 'battery_BAT') | grep -E "percentage" | awk '{print $2}' | tr -d '%')
 URGENT_VALUE=10
 
@@ -52,6 +52,8 @@ if [[ "${BATTERY_STATE}" = "discharging" ]]; then
     BATTERY_STATE_TEXT="dis"
 elif [[ "${BATTERY_STATE}" = "fully-charged" ]]; then
     BATTERY_STATE_TEXT="full"
+elif [[ "${BATTERY_STATE}" = "charging" ]]; then
+    BATTERY_STATE_TEXT="chr"
 fi
 
 echo "${BATTERY_POWER}% [${BATTERY_STATE_TEXT}] [${BATTERY_PROFILE_TEXT}]"
