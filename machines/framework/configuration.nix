@@ -68,6 +68,9 @@
     };
   };
 
+  # QMK
+  hardware.keyboard.qmk.enable = true;
+
   # Networking
   networking.hostName = "framework";
   networking.networkmanager.enable = true;
@@ -211,6 +214,7 @@
     gnome-system-monitor
     blueberry # for configuring bluetooth
     gnome-disk-utility
+    qmk
 
     # Utils
     wget
