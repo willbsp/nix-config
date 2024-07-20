@@ -54,7 +54,7 @@ smart_borders on
 default_border pixel 3
 
 # class             border  backgr  text
-client.focused      #74bbf2 #285577 #ffffff
+client.focused      #4c7899 #285577 #ffffff #2e9ef4 #74bbf2
 
 # Brightness
 bindsym XF86MonBrightnessDown exec light -U 2
