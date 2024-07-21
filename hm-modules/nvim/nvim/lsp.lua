@@ -130,6 +130,7 @@ lspconfig.nil_ls.setup {
   capabilities = capabilities,
 }
 
+lspconfig.clangd.setup {}
 lspconfig.jsonls.setup { capabilities = capabilities }
 lspconfig.arduino_language_server.setup {}
 lspconfig.gdscript.setup {}
