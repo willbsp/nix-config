@@ -15,6 +15,7 @@
     qflipper
     dolphin-emu
     rpi-imager
+    zathura
   ];
 
   programs.zsh.enable = true;
