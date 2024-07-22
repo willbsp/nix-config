@@ -13,5 +13,6 @@
       xdg.configFile."i3blocks/scripts/volume".source = ./i3blocks/scripts/volume.sh;
       xdg.configFile."i3blocks/scripts/memory".source = ./i3blocks/scripts/memory.sh;
       xdg.configFile."i3blocks/scripts/load_average".source = ./i3blocks/scripts/load_average.sh;
+      xdg.configFile."i3blocks/scripts/bluetooth".source = ./i3blocks/scripts/bluetooth.sh;
     };
 }

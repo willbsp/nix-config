@@ -294,8 +294,9 @@ bar {
     colors {
         background         $base
         statusline         $text
+        separator          $text
         focused_statusline $text
-        focused_separator  $base
+        focused_separator  $text
         focused_workspace  $base $base $green
         active_workspace   $base $base $blue
         inactive_workspace $base $base $surface1
