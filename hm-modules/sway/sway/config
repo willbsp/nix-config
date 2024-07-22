@@ -51,6 +51,7 @@ for_window [shell="xwayland"] title_format "[XWayland] %title"
 
 # default floating windows
 for_window [app_id="blueberry.py"] floating enable
+for_window [app_id="com.saivert.pwvucontrol"] floating enable
 
 gaps inner 10
 smart_gaps on

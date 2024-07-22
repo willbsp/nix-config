@@ -9,3 +9,11 @@ else
     echo "disconnected"
     echo "disconnected"
 fi
+
+open_app() {
+    (blueberry &)
+}
+
+case $BLOCK_BUTTON in
+    1) open_app # left click
+esac
