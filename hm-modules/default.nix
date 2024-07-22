@@ -10,8 +10,10 @@
 
   ideavim.enable = lib.mkDefault true;
   nvim.enable = lib.mkDefault true;
+  nvim.latexSupport = lib.mkDefault false;
   git.enable = lib.mkDefault true;
   kitty.enable = lib.mkDefault true;
+  kitty.disableTabs = lib.mkDefault false;
   sway.enable = lib.mkDefault false;
 
   home.username = "will";

@@ -4,6 +4,8 @@
   home.file.".config/fastfetch/logo.jpg".source = ./fastfetch/spot.jpg;
 
   sway.enable = true; # enable sway configuration module
+  kitty.disableTabs = true;
+  nvim.latexSupport = true;
 
   home.packages = with pkgs; [
     protonmail-desktop

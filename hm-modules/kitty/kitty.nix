@@ -2,24 +2,26 @@
   options = {
     kitty.enable =
       lib.mkEnableOption "Enables kitty configuration";
+    kitty.disableTabs =
+      lib.mkEnableOption "Enables kitty configuration";
   };
 
-  config = lib.mkIf config.kitty.enable
+  config =
     {
-      programs.kitty = {
+      programs.kitty = lib.mkIf config.kitty.enable {
         enable = true;
         theme = "Catppuccin-Frappe";
-          keybindings = {
-            # Unmap tab shortcuts, prefer using Sways tab layout
-            "ctrl+shift+right" = "";
-            "ctrl+shift+left" = "";
-            "ctrl+tab" = "";
-            "ctrl+shift+tab" = "";
-            "ctrl+shift+q" = "";
-            "ctrl+shift+." = "";
-            "ctrl+shift+," = "";
-            "ctrl+shift+alt+t" = "";
-          };
+        keybindings = lib.mkIf config.kitty.disableTabs {
+          # Unmap tab shortcuts, prefer using Sways tab layout
+          "ctrl+shift+right" = "";
+          "ctrl+shift+left" = "";
+          "ctrl+tab" = "";
+          "ctrl+shift+tab" = "";
+          "ctrl+shift+q" = "";
+          "ctrl+shift+." = "";
+          "ctrl+shift+," = "";
+          "ctrl+shift+alt+t" = "";
+        };
         settings = {
           cursor_shape = "beam";
           tab_bar_align = "left";
@@ -30,8 +32,8 @@
           initial_window_width = "127c";
           initial_window_height = "50c";
           confirm_os_window_close = 0;
-          tab_bar_style = "hidden";
         };
+        settings.tab_bar_style = lib.mkIf config.kitty.disableTabs "hidden";
       };
     };
 }

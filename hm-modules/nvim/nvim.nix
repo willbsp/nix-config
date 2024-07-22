@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }: {
   options = {
     nvim.enable = lib.mkEnableOption "Enables neovim configuration";
+    nvim.latexSupport = lib.mkEnableOption "Installs TexLive";
   };
   config = lib.mkIf config.nvim.enable {
     programs.neovim = {
@@ -41,7 +42,7 @@
         # telescope dependency
         ripgrep
 
-      ];
+      ] ++ lib.optionals config.nvim.latexSupport [ pkgs.texliveFull pkgs.texlab ];
       plugins = with pkgs.vimPlugins; [
 
         # Theme
@@ -96,7 +97,7 @@
         vim-sleuth
 
 
-      ];
+      ] ++ lib.optionals config.nvim.latexSupport [ pkgs.vimPlugins.vimtex ];
       extraLuaConfig = ''
         ${builtins.readFile ./nvim/options.lua}
         ${builtins.readFile ./nvim/lsp.lua}
