@@ -52,8 +52,8 @@ bindswitch --reload --locked lid:off output eDP-1 enable
 #
 
 workspace_layout tabbed
-gaps inner 10
-smart_gaps on
+#gaps inner 10
+#smart_gaps on
 smart_borders on
 default_border pixel 3
 hide_edge_borders --i3 none
