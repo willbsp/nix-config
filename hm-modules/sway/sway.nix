@@ -8,6 +8,7 @@
     {
       xdg.configFile."sway/config".source = ./sway/config;
       xdg.configFile."sway/catppuccin-frappe".source = ./sway/catppuccin-frappe;
+      xdg.configFile."mako/config".source = ./mako/config;
       xdg.configFile."i3blocks/config".source = ./i3blocks/config;
       xdg.configFile."i3blocks/scripts/battery".source = ./i3blocks/scripts/battery.sh;
       xdg.configFile."i3blocks/scripts/volume".source = ./i3blocks/scripts/volume.sh;
