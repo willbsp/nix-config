@@ -25,7 +25,9 @@ set $browser firefox
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu rofi -show drun | xargs swaymsg exec --
+#set $menu rofi -show drun | xargs swaymsg exec --
+#set $menu rofi -combi-modi window,drun -show combi | xargs swaymsg exec --
+set $menu "rofi -show combi -combi-modi window,drun | xargs swaymsg exec --"
 
 set $bg /home/will/Pictures/Wallpapers/gregoire-thibaud-LH3HxtPfzXs-unsplash.jpg
 set $lock_cmd "swaylock -f -i $bg"
