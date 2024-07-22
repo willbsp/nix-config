@@ -4,6 +4,8 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+include catppuccin-frappe
+
 exec nm-applet --indicator
 exec flatpak run org.signal.Signal
 exec flatpak run sh.cider.Cider
@@ -54,7 +56,16 @@ smart_borders on
 default_border pixel 3
 
 # class             border  backgr  text
-client.focused      #4c7899 #285577 #ffffff #2e9ef4 #74bbf2
+#client.focused      #4c7899 #285577 #ffffff #2e9ef4 #74bbf2
+
+# target                 title     bg    text   indicator  border
+client.focused           $lavender $base $text  $rosewater $lavender
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
 
 # Brightness
 bindsym XF86MonBrightnessDown exec light -U 2
@@ -273,10 +284,21 @@ bar {
     # The default just shows the current date and time.
     #status_command while date +'%Y-%m-%d %X'; do sleep 1; done
 
+    #colors {
+        #statusline #ffffff
+        #background #323232
+        #inactive_workspace #32323200 #32323200 #5c5c5c
+    #}
     colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        background         $base
+        statusline         $text
+        focused_statusline $text
+        focused_separator  $base
+        focused_workspace  $base $base $green
+        active_workspace   $base $base $blue
+        inactive_workspace $base $base $surface1
+        urgent_workspace   $base $base $surface1
+        binding_mode       $base $base $surface1
     }
 }
 
