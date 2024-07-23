@@ -1,4 +1,3 @@
-{pkgs, lib, ...}: {
-  imports = [ ../../home.nix];
+{ pkgs, lib, ... }: {
   home.homeDirectory = lib.mkForce "/Users/will";
 }
