@@ -96,6 +96,9 @@
         # Detect tabs vs spaces automatically
         vim-sleuth
 
+        # Movement plugin
+        leap-nvim
+
 
       ] ++ lib.optionals config.nvim.latexSupport [ pkgs.vimPlugins.vimtex ];
       extraLuaConfig = ''
@@ -112,6 +115,7 @@
         ${builtins.readFile ./nvim/neoscroll.lua}
         ${builtins.readFile ./nvim/autopairs.lua}
         ${builtins.readFile ./nvim/neotree.lua}
+        ${builtins.readFile ./nvim/leap.lua}
       '';
     };
 
