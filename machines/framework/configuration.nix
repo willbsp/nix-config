@@ -195,12 +195,9 @@
     pwvucontrol # pipewire equivalent of pavucontrol
     loupe # gnome image viewer
     nautilus # file manager
-    mpv-unwrapped
-    moonlight-qt
     gnome-system-monitor
     blueberry # for configuring bluetooth
     gnome-disk-utility
-    qmk
 
     # Utils
     wget

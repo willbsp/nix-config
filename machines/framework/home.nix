@@ -18,6 +18,9 @@
     dolphin-emu
     rpi-imager
     zathura
+    moonlight-qt
+    mpv-unwrapped
+    qmk
   ];
 
   programs.zsh.enable = true;
