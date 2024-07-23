@@ -20,6 +20,7 @@
           "ctrl+shift+q" = "";
           "ctrl+shift+." = "";
           "ctrl+shift+," = "";
+          "ctrl+shift+t" = "";
           "ctrl+shift+alt+t" = "";
         };
         settings = {
