@@ -16,6 +16,9 @@
         lua-language-server
         stylua
 
+        # ltex
+        ltex-ls
+
         # arduino
         # ensure: arduino-cli core install ......
         arduino-language-server
