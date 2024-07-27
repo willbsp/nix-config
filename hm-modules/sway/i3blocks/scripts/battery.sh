@@ -58,7 +58,7 @@ fi
 
 echo "${BATTERY_POWER}% [${BATTERY_STATE_TEXT}] [${BATTERY_PROFILE_TEXT}]"
 echo "${BATTERY_POWER}% [${BATTERY_STATE_TEXT}] [${BATTERY_PROFILE_TEXT}]"
-echo "${TEXT_COLOUR}"
+#echo "${TEXT_COLOUR}"
 
 if [[ "${BATTERY_POWER}" -le "${URGENT_VALUE}" ]]; then
   exit 33

@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-
+{ pkgs, inputs, ... }: {
   #home.file.".zshrc".source = ./zsh/.zshrc;
   home.file.".config/fastfetch/logo.jpg".source = ./fastfetch/spot.jpg;
 
@@ -22,6 +21,47 @@
     mpv-unwrapped
     qmk
   ];
+
+  services.darkman = {
+    enable = true;
+    darkModeScripts = {
+      gtk-theme = ''
+        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/gtk-theme "'adw-gtk3-dark'"
+      '';
+      sway-theme = ''
+        while read p; do
+          ${pkgs.sway}/bin/swaymsg $p
+        done <~/.config/sway/catppuccin-frappe
+        while read p; do
+          ${pkgs.sway}/bin/swaymsg $p
+        done <~/.config/sway/set-sway-colours
+      '';
+      kitty-theme = ''
+        ${pkgs.kitty}/bin/kitten theme --config-file-name=/tmp/kitty.conf --reload-in=all Catppuccin-Frappe
+      '';
+    };
+    lightModeScripts = {
+      gtk-theme = ''
+        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/gtk-theme "'adw-gtk3'"
+      '';
+      sway-theme = ''
+        while read p; do
+          ${pkgs.sway}/bin/swaymsg $p
+        done <~/.config/sway/catppuccin-latte
+        while read p; do
+          ${pkgs.sway}/bin/swaymsg $p
+        done <~/.config/sway/set-sway-colours
+      '';
+      kitty-theme = ''
+        ${pkgs.kitty}/bin/kitten theme --config-file-name=/tmp/kitty.conf --reload-in=all Catppuccin-Latte
+      '';
+    };
+    settings = {
+      usegeoclue = false;
+    };
+  };
 
   programs.zsh.enable = true;
   programs.zsh.initExtra = "fastfetch";

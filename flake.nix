@@ -15,9 +15,14 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    auto-dark-mode-nvim = {
+      url = "github:f-person/auto-dark-mode.nvim";
+      flake = false;
+    };
   };
-  outputs = { nixpkgs, nix-darwin, nixos-hardware, lanzaboote, home-manager, ... }@inputs:
+  outputs = { nixpkgs, nix-darwin, nixos-hardware, lanzaboote, home-manager, auto-dark-mode-nvim, ... }@inputs:
     {
+
 
       nixosConfigurations = {
         "framework" = nixpkgs.lib.nixosSystem {
@@ -31,6 +36,16 @@
             lanzaboote.nixosModules.lanzaboote
             home-manager.nixosModules.home-manager
             {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  vimPlugins = prev.vimPlugins // {
+                    auto-dark-mode = prev.vimUtils.buildVimPlugin {
+                      name = "auto-dark-mode-nvim";
+                      src = auto-dark-mode-nvim;
+                    };
+                  };
+                })
+              ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";

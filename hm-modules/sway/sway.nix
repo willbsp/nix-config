@@ -7,7 +7,9 @@
   config = lib.mkIf config.sway.enable
     {
       xdg.configFile."sway/config".source = ./sway/config;
+      xdg.configFile."sway/set-sway-colours".source = ./sway/set-sway-colours;
       xdg.configFile."sway/catppuccin-frappe".source = ./sway/catppuccin-frappe;
+      xdg.configFile."sway/catppuccin-latte".source = ./sway/catppuccin-latte;
       xdg.configFile."mako/config".source = ./mako/config;
       xdg.configFile."i3blocks/config".source = ./i3blocks/config;
       xdg.configFile."i3blocks/scripts/battery".source = ./i3blocks/scripts/battery.sh;

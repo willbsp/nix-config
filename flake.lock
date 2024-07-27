@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "auto-dark-mode-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1716054445,
+        "narHash": "sha256-ZRaJbIuQJmh6MoWjRwNK8n0dmd5Cv/BoXGovNhggcnQ=",
+        "owner": "f-person",
+        "repo": "auto-dark-mode.nvim",
+        "rev": "2b8c938da9a7c9432120266b92936b2c22e8cfb8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "f-person",
+        "repo": "auto-dark-mode.nvim",
+        "type": "github"
+      }
+    },
     "crane": {
       "inputs": {
         "nixpkgs": [
@@ -242,6 +258,7 @@
     },
     "root": {
       "inputs": {
+        "auto-dark-mode-nvim": "auto-dark-mode-nvim",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "nix-darwin": "nix-darwin",

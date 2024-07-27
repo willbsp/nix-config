@@ -32,7 +32,7 @@
         # docker compose language server
         docker-compose-language-service
 
-        # vs code lang servers (for json)
+        # vs code lang servers (for json and html)
         vscode-langservers-extracted
 
         # for clipboard integration
@@ -46,10 +46,7 @@
       plugins = with pkgs.vimPlugins; [
 
         # Theme
-        {
-          plugin = catppuccin-nvim;
-          config = "colorscheme catppuccin-frappe";
-        }
+        catppuccin-nvim
 
         # LSP
         nvim-lspconfig
@@ -83,11 +80,11 @@
         gitsigns-nvim
         vim-fugitive # git wrapper
 
-        # Neoscroll
-        neoscroll-nvim
-
         # Auto pairs
         nvim-autopairs
+
+        # Dark mode switcher
+        auto-dark-mode
 
         # Neo-tree
         neo-tree-nvim
@@ -112,10 +109,10 @@
         ${builtins.readFile ./nvim/telescope.lua}
         ${builtins.readFile ./nvim/git.lua}
         ${builtins.readFile ./nvim/keymaps.lua}
-        ${builtins.readFile ./nvim/neoscroll.lua}
         ${builtins.readFile ./nvim/autopairs.lua}
         ${builtins.readFile ./nvim/neotree.lua}
         ${builtins.readFile ./nvim/leap.lua}
+        ${builtins.readFile ./nvim/autodarkmode.lua}
       '';
     };
 

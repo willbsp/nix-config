@@ -1,6 +1,9 @@
 -- Clear hlsearch with ESC in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Open netrw explorer
+vim.keymap.set('n', '<leader>p', vim.cmd.Ex, { desc = 'Open netrw' })
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })

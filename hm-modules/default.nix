@@ -1,5 +1,4 @@
-{ pkgs, lib, ... }: {
-
+{ pkgs, lib, inputs, ... }: {
   imports = [
     ./ideavim/ideavim.nix
     ./nvim/nvim.nix

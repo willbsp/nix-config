@@ -10,7 +10,7 @@
     {
       programs.kitty = lib.mkIf config.kitty.enable {
         enable = true;
-        theme = "Catppuccin-Frappe";
+        extraConfig = "${builtins.readFile ./theme.conf}";
         keybindings = lib.mkIf config.kitty.disableTabs {
           # Unmap tab shortcuts, prefer using Sways tab layout
           "ctrl+shift+right" = "";
