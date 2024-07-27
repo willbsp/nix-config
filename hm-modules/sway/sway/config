@@ -39,7 +39,7 @@ set $exit_cmd "swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes,
 #
 
 # Font
-font pango:Terminus Bold 14
+font pango:Terminus Bold 12
 # Wallpaper
 output * bg $bg fill
 # Monitors
