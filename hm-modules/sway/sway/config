@@ -4,8 +4,6 @@
 #include catppuccin-frappe
 include catppuccin-latte
 
-# TODO https://github.com/swaywm/sway/wiki#move-workspace-to-current-output-when-switching
-
 #
 # Autostart
 #
