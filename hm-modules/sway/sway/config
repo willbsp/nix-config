@@ -4,6 +4,8 @@
 #include catppuccin-frappe
 include catppuccin-latte
 
+# TODO https://github.com/swaywm/sway/wiki#move-workspace-to-current-output-when-switching
+
 #
 # Autostart
 #
@@ -30,9 +32,13 @@ set $files nautilus -w
 set $screenshot_area grimshot copy area
 set $menu "rofi -show combi -combi-modi window,drun | xargs swaymsg exec --"
 # Background
-set $bg /home/will/Pictures/Wallpapers/gregoire-thibaud-LH3HxtPfzXs-unsplash.jpg
+set $bg /home/will/Pictures/Wallpapers/nunzio-guerrera-x5mTFgOD6M8-unsplash.jpg
 set $lock_cmd "swaylock -f -i $bg"
 set $exit_cmd "swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'"
+# Marks
+set $get_mark echo | rofi -dmenu -l 0 -theme-str 'listview { enabled: false;}' -i -p mark | xargs -I % swaymsg mark "%"
+set $remove_mark echo | rofi -dmenu -l 0 -theme-str 'listview { enabled: false;}' -i -p unmark | xargs -I % swaymsg unmark "%"
+set $goto_mark echo | rofi -dmenu -l 0 -theme-str 'listview { enabled: false;}' -i -p goto | xargs -I % swaymsg '[con_mark=^%$]' focus
 
 #
 # Output
@@ -59,6 +65,7 @@ workspace_layout tabbed
 smart_borders on
 default_border pixel 3
 hide_edge_borders --i3 none
+workspace_auto_back_and_forth yes
 
 #
 # Behaviour
@@ -182,6 +189,11 @@ bindsym $mod+a focus parent
 # Scratchpad
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+# Marks
+bindsym $mod+m exec $get_mark
+bindsym $mod+u exec $remove_mark
+bindsym $mod+Shift+u unmark
+bindsym $mod+g exec $goto_mark
 # Lock the screen
 bindsym $mod+Shift+Escape exec $lock_cmd
 # Brightness

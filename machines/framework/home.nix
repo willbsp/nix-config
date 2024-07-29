@@ -20,6 +20,7 @@
     moonlight-qt
     mpv-unwrapped
     qmk
+    adw-gtk3
   ];
 
   services.darkman = {
@@ -82,13 +83,6 @@
       enable = true;
       defaultCursor = "Adwaita";
     };
-  };
-
-  # match libadaita apps
-  gtk.enable = true;
-  gtk.theme = {
-    name = "adw-gtk3";
-    package = pkgs.adw-gtk3;
   };
 
   programs.fastfetch = {
