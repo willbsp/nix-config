@@ -28,9 +28,9 @@ set $term kitty
 set $browser firefox
 set $files nautilus -w
 set $screenshot_area grimshot copy area
-set $menu "rofi -show combi -combi-modi window,drun | xargs swaymsg exec --"
+set $menu "rofi -show combi -combi-modi window,drun -font 'Terminus (TTF) Bold 12' | xargs swaymsg exec --"
 # Background
-set $bg /home/will/Pictures/Wallpapers/nunzio-guerrera-x5mTFgOD6M8-unsplash.jpg
+set $bg /home/will/Pictures/Wallpapers/katelyn-greer-V1ZoeGMnkOU-unsplash.jpg
 set $lock_cmd "swaylock -f -i $bg"
 set $exit_cmd "swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'"
 # Marks
@@ -168,6 +168,10 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Ctrl+Shift+$right move workspace to output right
+bindsym $mod+Ctrl+Shift+$left move workspace to output left
+bindsym $mod+Ctrl+Shift+$up move workspace to output up
+bindsym $mod+Ctrl+Shift+$down move workspace to output down
 # Split the current object of your focus
 bindsym $mod+b splith
 bindsym $mod+v splitv

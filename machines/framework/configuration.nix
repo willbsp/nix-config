@@ -191,6 +191,7 @@
   fonts.packages = with pkgs; [
     cantarell-fonts # gnome font
     terminus_font
+    terminus_font_ttf
   ];
 
   # System packages
