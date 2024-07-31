@@ -23,6 +23,10 @@
     adw-gtk3
   ];
 
+  home.sessionVariables = {
+    TERMINAL = "kitty";
+  };
+
   services.darkman = {
     enable = true;
     darkModeScripts = {
