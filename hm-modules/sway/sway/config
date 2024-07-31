@@ -1,8 +1,8 @@
 #
 # Includes
 #
-#include catppuccin-frappe
 include catppuccin-latte
+include set-sway-colours
 
 #
 # Autostart
@@ -32,7 +32,6 @@ set $menu "rofi -show combi -combi-modi window,drun -font 'Terminus (TTF) Bold 1
 # Background
 set $bg /home/will/Pictures/Wallpapers/katelyn-greer-V1ZoeGMnkOU-unsplash.jpg
 set $lock_cmd "swaylock -f -i $bg"
-set $exit_cmd "swaynag -t warning -m 'Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'"
 # Marks
 set $get_mark echo | rofi -dmenu -l 0 -theme-str 'listview { enabled: false;}' -i -p mark | xargs -I % swaymsg mark "%"
 set $remove_mark echo | rofi -dmenu -l 0 -theme-str 'listview { enabled: false;}' -i -p unmark | xargs -I % swaymsg unmark "%"
@@ -58,24 +57,12 @@ bindswitch --reload --locked lid:off output eDP-1 enable
 #
 
 workspace_layout tabbed
-#gaps inner 10
-#smart_gaps on
 smart_borders on
 default_border pixel 3
 hide_edge_borders --i3 none
 workspace_auto_back_and_forth yes
-
-#
-# Behaviour
-#
-
-# Target                 Title     Bg    Text   Indicator  Border
-client.focused           $lavender $base $text  $rosewater $lavender
-client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
-client.unfocused         $overlay0 $base $text  $rosewater $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
+#gaps inner 10
+#smart_gaps on
 
 #
 # Window rules
@@ -101,7 +88,7 @@ exec swayidle -w \
           before-sleep $lock_cmd
 
 #
-### Input configuration
+# Input configuration
 #
 
 input type:touchpad {
@@ -135,8 +122,6 @@ bindsym $mod+d exec $menu
 floating_modifier $mod normal
 # Reload the configuration
 bindsym $mod+Shift+c reload
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+backspace exec $exit_cmd
 # Move your focus around
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -197,7 +182,6 @@ bindsym $mod+u exec $remove_mark
 bindsym $mod+Shift+u unmark
 bindsym $mod+g exec $goto_mark
 # Lock the screen
-bindsym $mod+Shift+Escape exec $lock_cmd
 # Brightness
 bindsym XF86MonBrightnessDown exec light -U 2
 bindsym XF86MonBrightnessUp exec light -A 2
@@ -218,12 +202,31 @@ bindsym XF86AudioPrev exec 'playerctl previous'
 
 bindsym $mod+r mode "resize"
 mode "resize" {
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindsym $left resize shrink width 60px
+    bindsym $down resize grow height 60px
+    bindsym $up resize shrink height 60px
+    bindsym $right resize grow width 60px
+    bindsym $left+Shift resize shrink width 10px
+    bindsym $down+Shift resize grow height 10px
+    bindsym $up+Shift resize shrink height 10px
+    bindsym $right+Shift resize grow width 10px
     bindsym Return mode "default"
     bindsym Escape mode "default"
+}
+
+#
+# System controls
+#
+
+bindsym $mod+Shift+Escape mode "(l)ock, (e)xit, (s)uspend, (r)eboot, (p)oweroff"
+mode "(l)ock, (e)xit, (s)uspend, (r)eboot, (p)oweroff" {
+  bindsym l exec $lock_cmd; mode "default"
+  bindsym e exec swaymsg exit
+  bindsym s exec systemctl suspend
+  bindsym r exec systemctl reboot
+  bindsym p exec systemctl poweroff
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 #
@@ -231,25 +234,10 @@ mode "resize" {
 #
 
 bar 0 {
-
     status_edge_padding 10
     status_command SCRIPT_DIR=~/.config/i3blocks i3blocks
     position top
     tray_output none
-
-    colors {
-        background         $base
-        statusline         $text
-        separator          $text
-        focused_statusline $text
-        focused_separator  $text
-        focused_workspace  $base $base $green
-        active_workspace   $base $base $blue
-        inactive_workspace $base $base $surface1
-        urgent_workspace   $base $base $surface1
-        binding_mode       $base $base $surface1
-    }
-
 }
 
 include /etc/sway/config.d/*
