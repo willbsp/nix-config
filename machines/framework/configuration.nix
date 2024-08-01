@@ -194,6 +194,23 @@
     terminus_font_ttf
   ];
 
+  # Use gnome authentication agent
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+  };
+
   # System packages
   environment.systemPackages = with pkgs; [
 
@@ -201,13 +218,13 @@
     #nextcloud-client
 
     # For sway TODO move to extraPackages []
-    networkmanagerapplet
     pwvucontrol # pipewire equivalent of pavucontrol
     loupe # gnome image viewer
     nautilus # file manager
     gnome-system-monitor
     blueberry # for configuring bluetooth
     gnome-disk-utility
+    polkit_gnome
 
     # Utils
     wget

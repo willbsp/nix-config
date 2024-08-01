@@ -1,1 +1,18 @@
 @import "theme"
+configuration {
+	modes: "window,drun,ssh,combi";
+	font: "Terminus (TTF) Bold 12";
+	combi-modes: "window,drun,ssh";
+	combi-hide-mode-prefix: true;
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+  }
+  combi {
+      modi: "window,drun,ssh";
+  }
+}

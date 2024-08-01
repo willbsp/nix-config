@@ -8,7 +8,6 @@ include set-sway-colours
 # Autostart
 #
 exec darkman set light
-exec nm-applet --indicator
 exec flatpak run org.signal.Signal
 exec flatpak run sh.cider.Cider
 
@@ -28,9 +27,9 @@ set $term kitty
 set $browser firefox
 set $files nautilus -w
 set $screenshot_area grimshot copy area
-set $menu "export TERMINAL=kitty; rofi -show combi -combi-modi window,drun,ssh -font 'Terminus (TTF) Bold 12' -theme-str 'window {width: 40%;}' | xargs swaymsg exec --"
+set $menu "export TERMINAL=kitty; rofi -show combi -theme-str 'window {width: 40%;}' | xargs swaymsg exec --"
 # Background
-set $bg /home/will/Pictures/Wallpapers/katelyn-greer-V1ZoeGMnkOU-unsplash.jpg
+set $bg /home/will/Pictures/Wallpapers/buddy-photo-rAk2RXq2wqc-unsplash.jpg
 set $lock_cmd "swaylock -f -i $bg"
 # Marks
 set $get_mark echo | rofi -dmenu -l 0 -theme-str 'listview { enabled: false;}' -i -p mark | xargs -I % swaymsg mark "%"
@@ -218,11 +217,12 @@ mode "resize" {
 # System controls
 #
 
-bindsym $mod+Shift+Escape mode "(l)ock, (e)xit, (s)uspend, (r)eboot, (p)oweroff"
-mode "(l)ock, (e)xit, (s)uspend, (r)eboot, (p)oweroff" {
+bindsym $mod+Shift+Escape mode "(l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (p)oweroff"
+mode "(l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (p)oweroff" {
   bindsym l exec $lock_cmd; mode "default"
   bindsym e exec swaymsg exit
   bindsym s exec systemctl suspend
+  bindsym h exec systemctl hibernate
   bindsym r exec systemctl reboot
   bindsym p exec systemctl poweroff
   bindsym Return mode "default"
