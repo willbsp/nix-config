@@ -28,7 +28,7 @@ set $term kitty
 set $browser firefox
 set $files nautilus -w
 set $screenshot_area grimshot copy area
-set $menu "rofi -show combi -combi-modi window,drun -font 'Terminus (TTF) Bold 12' | xargs swaymsg exec --"
+set $menu "export TERMINAL=kitty; rofi -show combi -combi-modi window,drun,ssh -font 'Terminus (TTF) Bold 12' -theme-str 'window {width: 40%;}' | xargs swaymsg exec --"
 # Background
 set $bg /home/will/Pictures/Wallpapers/katelyn-greer-V1ZoeGMnkOU-unsplash.jpg
 set $lock_cmd "swaylock -f -i $bg"
