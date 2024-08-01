@@ -8,7 +8,7 @@ client.background $base
 bar 0 colors background $base
 bar 0 colors statusline $text
 bar 0 colors focused_statusline $text
-bar 0 colors focused_separator $text
+bar 0 colors separator $surface1
 bar 0 colors focused_workspace $base $base $green
 bar 0 colors active_workspace $base $base $blue
 bar 0 colors inactive_workspace $base $base $surface1
