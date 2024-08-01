@@ -217,7 +217,6 @@
     # Nextcloud client
     #nextcloud-client
 
-    # For sway TODO move to extraPackages []
     pwvucontrol # pipewire equivalent of pavucontrol
     loupe # gnome image viewer
     nautilus # file manager
