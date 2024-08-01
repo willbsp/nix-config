@@ -5,6 +5,7 @@
   sway.enable = true; # enable sway configuration module
   kitty.disableTabs = true;
   nvim.latexSupport = true;
+  nvim.autoDark = true;
 
   home.packages = with pkgs; [
     protonmail-desktop

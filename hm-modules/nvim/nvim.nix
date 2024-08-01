@@ -2,6 +2,7 @@
   options = {
     nvim.enable = lib.mkEnableOption "Enables neovim configuration";
     nvim.latexSupport = lib.mkEnableOption "Installs TexLive";
+    nvim.autoDark = lib.mkEnableOption "Enable auto dark plugin";
   };
   config = lib.mkIf config.nvim.enable {
     programs.neovim = {
@@ -49,7 +50,10 @@
       plugins = with pkgs.vimPlugins; [
 
         # Theme
-        catppuccin-nvim
+        {
+          plugin = catppuccin-nvim;
+          config = "colorscheme catppuccin-latte";
+        }
 
         # LSP
         nvim-lspconfig
@@ -86,9 +90,6 @@
         # Auto pairs
         nvim-autopairs
 
-        # Dark mode switcher
-        auto-dark-mode
-
         # Neo-tree
         neo-tree-nvim
         nui-nvim # required dependency
@@ -100,7 +101,9 @@
         leap-nvim
 
 
-      ] ++ lib.optionals config.nvim.latexSupport [ pkgs.vimPlugins.vimtex ];
+      ] 
+      ++ lib.optionals config.nvim.latexSupport [ pkgs.vimPlugins.vimtex ]
+      ++ lib.optionals config.nvim.autoDark [ pkgs.vimPlugins.auto-dark-mode ];
       extraLuaConfig = ''
         ${builtins.readFile ./nvim/options.lua}
         ${builtins.readFile ./nvim/lsp.lua}
