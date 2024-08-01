@@ -45,6 +45,9 @@
       kitty-theme = ''
         ${pkgs.kitty}/bin/kitten theme --config-file-name=/tmp/kitty.conf --reload-in=all Catppuccin-Frappe
       '';
+      rofi-theme = ''
+        echo '@theme "${pkgs.rofi}/share/rofi/themes/Arc-Dark.rasi"' > ~/.config/rofi/theme.rasi
+      '';
     };
     lightModeScripts = {
       gtk-theme = ''
@@ -61,6 +64,9 @@
       '';
       kitty-theme = ''
         ${pkgs.kitty}/bin/kitten theme --config-file-name=/tmp/kitty.conf --reload-in=all Catppuccin-Latte
+      '';
+      rofi-theme = ''
+        echo '@theme "${pkgs.rofi}/share/rofi/themes/Arc.rasi"' > ~/.config/rofi/theme.rasi
       '';
     };
     settings = {

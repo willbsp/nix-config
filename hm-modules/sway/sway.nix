@@ -11,6 +11,7 @@
       xdg.configFile."sway/catppuccin-frappe".source = ./sway/catppuccin-frappe;
       xdg.configFile."sway/catppuccin-latte".source = ./sway/catppuccin-latte;
       xdg.configFile."mako/config".source = ./mako/config;
+      xdg.configFile."rofi/config.rasi".source = ./rofi/config.rasi;
       xdg.configFile."i3blocks/config".source = ./i3blocks/config;
       xdg.configFile."i3blocks/scripts/battery".source = ./i3blocks/scripts/battery.sh;
       xdg.configFile."i3blocks/scripts/volume".source = ./i3blocks/scripts/volume.sh;
