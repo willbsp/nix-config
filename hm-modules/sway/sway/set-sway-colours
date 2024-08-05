@@ -12,5 +12,5 @@ bar 0 colors separator $surface1
 bar 0 colors focused_workspace $base $base $green
 bar 0 colors active_workspace $base $base $blue
 bar 0 colors inactive_workspace $base $base $surface1
-bar 0 colors urgent_workspace $base $base $surface1
+bar 0 colors urgent_workspace $base $base $red
 bar 0 colors binding_mode $base $base $text
