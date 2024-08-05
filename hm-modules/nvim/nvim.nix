@@ -54,8 +54,8 @@
 
         # Theme
         {
-          plugin = catppuccin-nvim;
-          config = "colorscheme catppuccin-latte";
+          plugin = rose-pine;
+          config = "colorscheme rose-pine-dawn";
         }
 
         # LSP

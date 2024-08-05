@@ -38,16 +38,16 @@
       sway-theme = ''
         while read p; do
           ${pkgs.sway}/bin/swaymsg $p
-        done <~/.config/sway/catppuccin-frappe
+        done <~/.config/sway/rose-pine
         while read p; do
           ${pkgs.sway}/bin/swaymsg $p
         done <~/.config/sway/set-sway-colours
       '';
       kitty-theme = ''
-        ${pkgs.kitty}/bin/kitten theme --config-file-name=/tmp/kitty.conf --reload-in=all Catppuccin-Frappe
+        ${pkgs.kitty}/bin/kitten theme --config-file-name=/tmp/kitty.conf --reload-in=all 'Rosé Pine'
       '';
       rofi-theme = ''
-        echo '@theme "${pkgs.rofi}/share/rofi/themes/Arc-Dark.rasi"' > ~/.config/rofi/theme.rasi
+        echo '@theme "~/.config/rofi/rose-pine.rasi"' > ~/.config/rofi/theme.rasi
       '';
     };
     lightModeScripts = {
@@ -58,16 +58,16 @@
       sway-theme = ''
         while read p; do
           ${pkgs.sway}/bin/swaymsg $p
-        done <~/.config/sway/catppuccin-latte
+        done <~/.config/sway/rose-pine-dawn
         while read p; do
           ${pkgs.sway}/bin/swaymsg $p
         done <~/.config/sway/set-sway-colours
       '';
       kitty-theme = ''
-        ${pkgs.kitty}/bin/kitten theme --config-file-name=/tmp/kitty.conf --reload-in=all Catppuccin-Latte
+        ${pkgs.kitty}/bin/kitten theme --config-file-name=/tmp/kitty.conf --reload-in=all 'Rosé Pine Dawn'
       '';
       rofi-theme = ''
-        echo '@theme "${pkgs.rofi}/share/rofi/themes/Arc.rasi"' > ~/.config/rofi/theme.rasi
+        echo '@theme "~/.config/rofi/rose-pine-dawn.rasi"' > ~/.config/rofi/theme.rasi
       '';
     };
     settings = {

@@ -1,16 +1,16 @@
-client.focused $lavender $base $text $rosewater $lavender
-client.focused_inactive $overlay0 $base $text $rosewater $overlay0
-client.unfocused $overlay0 $base $text $rosewater $overlay0
-client.urgent $peach $base $peach $overlay0 $peach
-client.placeholder $overlay0 $base $text $overlay0 $overlay0
-client.background $base
+client.focused           $rose     $base $text  $rose      $rose
+client.focused_inactive  $text     $base $text  $subtle    $surface
+client.unfocused         $text     $base $text  $overlay   $overlay
+client.urgent            $text     $base $text  $love      $love
+client.placeholder       $base     $base $text  $overlay   $overlay
+client.background        $base
 
 bar 0 colors background $base
 bar 0 colors statusline $text
 bar 0 colors focused_statusline $text
-bar 0 colors separator $surface1
-bar 0 colors focused_workspace $base $base $green
-bar 0 colors active_workspace $base $base $blue
-bar 0 colors inactive_workspace $base $base $surface1
-bar 0 colors urgent_workspace $base $base $red
+bar 0 colors separator $muted
+bar 0 colors focused_workspace $base $base $rose
+bar 0 colors active_workspace $base $base $surface
+bar 0 colors inactive_workspace $base $base $muted
+bar 0 colors urgent_workspace $base $base $love
 bar 0 colors binding_mode $base $base $text
