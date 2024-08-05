@@ -33,6 +33,9 @@
         # bash language server
         nodePackages.bash-language-server
 
+        # rust
+        rust-analyzer
+
         # docker compose language server
         docker-compose-language-service
 

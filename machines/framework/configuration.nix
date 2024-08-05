@@ -231,6 +231,11 @@
     gcc
     sbctl
 
+    # rust
+    rustup
+    pkg-config
+
+
     # For accessing iOS devices
     libimobiledevice
     ifuse

@@ -146,3 +146,12 @@ lspconfig.docker_compose_language_service.setup {}
 lspconfig.bashls.setup {}
 lspconfig.texlab.setup {}
 lspconfig.html.setup {}
+lspconfig.rust_analyzer.setup {
+  settings = {
+    ['rust-analyzer'] = {
+      rust = {
+        analyzerTargetDir = true
+      }
+    }
+  }
+}
