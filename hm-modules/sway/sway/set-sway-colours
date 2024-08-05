@@ -10,7 +10,7 @@ bar 0 colors statusline $text
 bar 0 colors focused_statusline $text
 bar 0 colors separator $muted
 bar 0 colors focused_workspace $base $base $rose
-bar 0 colors active_workspace $base $base $surface
+bar 0 colors active_workspace $base $base $pine
 bar 0 colors inactive_workspace $base $base $muted
 bar 0 colors urgent_workspace $base $base $love
 bar 0 colors binding_mode $base $base $text
