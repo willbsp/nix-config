@@ -93,10 +93,6 @@
         # Auto pairs
         nvim-autopairs
 
-        # Neo-tree
-        neo-tree-nvim
-        nui-nvim # required dependency
-
         # Detect tabs vs spaces automatically
         vim-sleuth
 
@@ -119,7 +115,6 @@
         ${builtins.readFile ./nvim/git.lua}
         ${builtins.readFile ./nvim/keymaps.lua}
         ${builtins.readFile ./nvim/autopairs.lua}
-        ${builtins.readFile ./nvim/neotree.lua}
         ${builtins.readFile ./nvim/leap.lua}
         ${builtins.readFile ./nvim/autodarkmode.lua}
       '';
