@@ -75,6 +75,8 @@ for_window [app_id="com.saivert.pwvucontrol"] floating enable
 # Auto move windows to the scratchpad
 for_window [class="Cider"] move scratchpad
 for_window [class="Signal"] move scratchpad
+# Make terminal windows transparent
+for_window [app_id="kitty"] opacity 0.96
 
 #
 # Idle configuration
