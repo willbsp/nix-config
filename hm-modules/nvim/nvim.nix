@@ -120,7 +120,7 @@
         ${builtins.readFile ./nvim/keymaps.lua}
         ${builtins.readFile ./nvim/autopairs.lua}
         ${builtins.readFile ./nvim/leap.lua}
-        ${builtins.readFile ./nvim/autodarkmode.lua}
+        ${if config.nvim.autoDark then builtins.readFile ./nvim/autodarkmode.lua else ""}
       '';
     };
 
