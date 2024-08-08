@@ -17,6 +17,10 @@
         lua-language-server
         stylua
 
+        # python
+        python3
+        pyright
+
         # ltex
         ltex-ls
 
