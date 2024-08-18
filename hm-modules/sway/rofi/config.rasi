@@ -1,7 +1,7 @@
 @import "theme"
 configuration {
 	modes: "window,drun,ssh,combi";
-	font: "Terminus (TTF) Bold 12";
+	font: "Source Code Pro Regular 11";
 	combi-modes: "window,drun,ssh";
 	combi-hide-mode-prefix: true;
   timeout {

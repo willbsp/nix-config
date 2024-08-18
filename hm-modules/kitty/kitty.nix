@@ -23,6 +23,8 @@
           "ctrl+shift+t" = "";
           "ctrl+shift+alt+t" = "";
         };
+        font.name = "Source Code Pro";
+        font.size = 11;
         settings = {
           cursor_shape = "beam";
           tab_bar_align = "left";

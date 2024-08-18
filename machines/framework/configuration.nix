@@ -124,7 +124,7 @@
   services.fwupd.enable = true;
 
   # For accessing iOS devices
-  services.usbmuxd.enable = true;
+  #services.usbmuxd.enable = true;
 
   # Power profiles daemon
   services.power-profiles-daemon.enable = true;
@@ -192,6 +192,7 @@
     cantarell-fonts # gnome font
     terminus_font
     terminus_font_ttf
+    source-code-pro
   ];
 
   # Use gnome authentication agent
@@ -237,8 +238,8 @@
 
 
     # For accessing iOS devices
-    libimobiledevice
-    ifuse
+    #libimobiledevice
+    #ifuse
 
     # Plasma related packages
     #kdePackages.krdc

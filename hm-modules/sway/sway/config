@@ -41,7 +41,7 @@ set $goto_mark echo | rofi -dmenu -l 0 -theme-str 'listview { enabled: false;}' 
 #
 
 # Font
-font pango:Terminus Bold 12
+font pango:Source Code Pro Regular 11
 # Wallpaper
 output * bg $bg fill
 # Monitors
