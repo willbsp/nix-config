@@ -45,6 +45,8 @@
     size = 48 * 1024;
   }];
 
+  systemd.services.systemd-hibernate-clear.enable = lib.mkForce false;
+
   # Hardware
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -193,6 +195,7 @@
     terminus_font
     terminus_font_ttf
     source-code-pro
+    fira-code-nerdfont
   ];
 
   # Use gnome authentication agent

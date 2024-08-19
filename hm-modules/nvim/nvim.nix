@@ -103,6 +103,9 @@
         # Movement plugin
         leap-nvim
 
+        # Zen mode
+        zen-mode-nvim
+
 
       ] 
       ++ lib.optionals config.nvim.latexSupport [ pkgs.vimPlugins.vimtex ]

@@ -5,6 +5,7 @@
     ./git/git.nix
     ./kitty/kitty.nix
     ./sway/sway.nix
+    ./tmux/tmux.nix
   ];
 
   ideavim.enable = lib.mkDefault true;
@@ -15,6 +16,7 @@
   kitty.enable = lib.mkDefault true;
   kitty.disableTabs = lib.mkDefault false;
   sway.enable = lib.mkDefault false;
+  tmux.enable = lib.mkDefault true;
 
   home.username = "will";
   home.stateVersion = "24.05";

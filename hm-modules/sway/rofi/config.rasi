@@ -1,7 +1,7 @@
 @import "theme"
 configuration {
 	modes: "window,drun,ssh,combi";
-	font: "Source Code Pro Regular 11";
+	font: "FiraCode Nerd Font Regular 11";
 	combi-modes: "window,drun,ssh";
 	combi-hide-mode-prefix: true;
   timeout {

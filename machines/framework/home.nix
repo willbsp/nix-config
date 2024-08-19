@@ -1,6 +1,4 @@
 { pkgs, inputs, ... }: {
-  #home.file.".zshrc".source = ./zsh/.zshrc;
-  home.file.".config/fastfetch/logo.jpg".source = ./fastfetch/spot.jpg;
 
   sway.enable = true; # enable sway configuration module
   kitty.disableTabs = true;
@@ -46,6 +44,10 @@
       kitty-theme = ''
         ${pkgs.kitty}/bin/kitten theme --config-file-name=/tmp/kitty.conf --reload-in=all 'Rosé Pine'
       '';
+      tmux = ''
+        echo "set -g @rose_pine_variant 'main'" > ~/.config/tmux/theme.conf
+        ${pkgs.tmux}/bin/tmux source ~/.config/tmux/tmux.conf
+      '';
       rofi-theme = ''
         echo '@theme "~/.config/rofi/rose-pine.rasi"' > ~/.config/rofi/theme.rasi
       '';
@@ -66,6 +68,10 @@
       kitty-theme = ''
         ${pkgs.kitty}/bin/kitten theme --config-file-name=/tmp/kitty.conf --reload-in=all 'Rosé Pine Dawn'
       '';
+      tmux = ''
+        echo "set -g @rose_pine_variant 'dawn'" > ~/.config/tmux/theme.conf
+        ${pkgs.tmux}/bin/tmux source ~/.config/tmux/tmux.conf
+      '';
       rofi-theme = ''
         echo '@theme "~/.config/rofi/rose-pine-dawn.rasi"' > ~/.config/rofi/theme.rasi
       '';
@@ -76,7 +82,6 @@
   };
 
   programs.zsh.enable = true;
-  programs.zsh.initExtra = "fastfetch";
 
   home.shellAliases = {
     nixdir = "cd /etc/nixos";
@@ -99,14 +104,6 @@
   programs.fastfetch = {
     enable = true;
     settings = {
-      logo = {
-        type = "kitty";
-        source = "~/.config/fastfetch/logo.jpg";
-        width = 32;
-        padding = {
-          top = 1;
-        };
-      };
       modules = [
         "break"
         "title"
