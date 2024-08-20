@@ -20,6 +20,7 @@
     mpv-unwrapped
     qmk
     adw-gtk3
+    nextcloud-client
   ];
 
   home.sessionVariables = {

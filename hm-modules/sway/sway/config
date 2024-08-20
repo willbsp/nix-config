@@ -37,9 +37,11 @@ set $goto_mark echo | rofi -dmenu -l 0 -theme-str 'listview { enabled: false;}' 
 # Autostart
 #
 exec darkman set light
+exec nextcloud --background
 exec flatpak run org.signal.Signal
 exec firefox
 exec $term -- tmux
+exec flatpak run com.borgbase.Vorta
 exec flatpak run md.obsidian.Obsidian 'obsidian://open?vault=todo'
 exec flatpak run md.obsidian.Obsidian 'obsidian://open?vault=notes'
 
@@ -85,6 +87,7 @@ for_window [shell="xwayland"] title_format "[XWayland] %title"
 # Default floating windows
 for_window [app_id="blueberry.py"] floating enable
 for_window [app_id="com.saivert.pwvucontrol"] floating enable
+for_window [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
 # Auto move windows to the scratchpad
 for_window [class="Cider"] move scratchpad
 for_window [class="Signal"] move scratchpad

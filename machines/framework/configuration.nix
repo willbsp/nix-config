@@ -218,9 +218,6 @@
   # System packages
   environment.systemPackages = with pkgs; [
 
-    # Nextcloud client
-    #nextcloud-client
-
     pwvucontrol # pipewire equivalent of pavucontrol
     loupe # gnome image viewer
     nautilus # file manager
