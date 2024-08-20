@@ -220,10 +220,10 @@
 
     pwvucontrol # pipewire equivalent of pavucontrol
     loupe # gnome image viewer
-    nautilus # file manager
-    gnome-system-monitor
+    gnome.nautilus # file manager
+    gnome.gnome-system-monitor
     blueberry # for configuring bluetooth
-    gnome-disk-utility
+    gnome.gnome-disk-utility
     polkit_gnome
 
     # Utils
