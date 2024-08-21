@@ -113,6 +113,16 @@
             ./machines/macmini/configuration.nix
             home-manager.darwinModules.home-manager
             {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  vimPlugins = prev.vimPlugins // {
+                    auto-dark-mode = prev.vimUtils.buildVimPlugin {
+                      name = "auto-dark-mode-nvim";
+                      src = auto-dark-mode-nvim;
+                    };
+                  };
+                })
+              ];
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
