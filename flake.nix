@@ -2,6 +2,7 @@
   description = "NixOS and nix-darwin configuration";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.1";
@@ -20,7 +21,7 @@
       flake = false;
     };
   };
-  outputs = { nixpkgs, nix-darwin, nixos-hardware, lanzaboote, home-manager, auto-dark-mode-nvim, ... }@inputs:
+  outputs = { nixpkgs, nixpkgs-unstable, nix-darwin, nixos-hardware, lanzaboote, home-manager, auto-dark-mode-nvim, ... }@inputs:
     {
 
 
@@ -43,6 +44,9 @@
                       name = "auto-dark-mode-nvim";
                       src = auto-dark-mode-nvim;
                     };
+                  };
+                  unstable = import nixpkgs-unstable {
+                    system = prev.system;
                   };
                 })
               ];

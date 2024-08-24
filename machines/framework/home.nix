@@ -29,6 +29,7 @@
 
   services.darkman = {
     enable = true;
+    package = pkgs.unstable.darkman;
     darkModeScripts = {
       gtk-theme = ''
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
