@@ -55,7 +55,7 @@ font pango:FiraCode Nerd Font Regular 11
 # Wallpaper
 output * bg $bg fill
 # Monitors
-output eDP-1 scale 1.5 position 0 0 subpixel none
+output eDP-1 scale 2 position 0 0 subpixel none adaptive_sync on
 output "Samsung Electric Company LU28R55 HNMW500573" scale 1.5 position 1504 0 subpixel none
 # Clamshell mode
 bindswitch --reload --locked lid:on output eDP-1 disable
