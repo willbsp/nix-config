@@ -56,7 +56,7 @@ font pango:FiraCode Nerd Font Regular 11
 output * bg $bg fill
 # Monitors
 output eDP-1 scale 2 position 0 0 subpixel none adaptive_sync on
-output "Samsung Electric Company LU28R55 HNMW500573" scale 1.5 position 1504 0 subpixel none
+output "Samsung Electric Company LU28R55 HNMW500573" scale 1.5 position 1440 0 subpixel none
 # Clamshell mode
 bindswitch --reload --locked lid:on output eDP-1 disable
 bindswitch --reload --locked lid:off output eDP-1 enable
@@ -91,8 +91,6 @@ for_window [app_id="com.nextcloud.desktopclient.nextcloud"] floating enable
 # Auto move windows to the scratchpad
 for_window [class="Cider"] move scratchpad
 for_window [class="Signal"] move scratchpad
-# Make terminal windows transparent
-for_window [app_id="kitty"] opacity 0.94
 
 #
 # Idle configuration
