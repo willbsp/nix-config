@@ -12,6 +12,7 @@
       shortcut = "a";
       baseIndex = 1;
       mouse = true;
+      escapeTime = 5;
       extraConfig = ''
         source-file ~/.config/tmux/theme.conf
         run-shell ${pkgs.tmuxPlugins.rose-pine}/share/tmux-plugins/rose-pine/rose-pine.tmux
