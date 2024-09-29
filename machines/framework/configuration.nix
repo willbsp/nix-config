@@ -189,6 +189,13 @@
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  # Enable weekly garbage collection
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   # Font packages
   fonts.packages = with pkgs; [
     cantarell-fonts # gnome font
