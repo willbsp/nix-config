@@ -40,11 +40,14 @@
         # rust
         rust-analyzer
 
+        # c#
+        csharp-ls
+
         # docker compose language server
         docker-compose-language-service
 
         # vs code lang servers (for json and html)
-        #vscode-langservers-extracted
+        vscode-langservers-extracted
 
         # for clipboard integration
         xclip

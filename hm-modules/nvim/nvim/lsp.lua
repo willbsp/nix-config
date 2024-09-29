@@ -147,6 +147,7 @@ lspconfig.bashls.setup {}
 lspconfig.texlab.setup {}
 lspconfig.html.setup {}
 lspconfig.pyright.setup {}
+lspconfig.csharp_ls.setup{}
 lspconfig.rust_analyzer.setup {
   settings = {
     ['rust-analyzer'] = {

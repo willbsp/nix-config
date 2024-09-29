@@ -236,6 +236,8 @@
     rustup
     pkg-config
 
+    # dotnet
+    dotnet-sdk_8
 
     # For accessing iOS devices
     #libimobiledevice
