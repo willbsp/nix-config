@@ -34,15 +34,15 @@ markup=none
 #
 # The type defaults to "mem" if the instance is not specified.
 
-[bluetooth]
-label=bt 
-separator=true
-interval=5
+#[bluetooth]
+#label=bt 
+#separator=true
+#interval=5
 
-[load_average]
-label=loadavg 
-separator=true
-interval=5
+#[load_average]
+#label=loadavg 
+#separator=true
+#interval=5
 
 [memory]
 label=mem 
